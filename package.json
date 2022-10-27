@@ -9,6 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.3",
+    "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.11",
+    "@portabletext/react": "^1.0.6",
+    "@sanity/client": "^3.4.1",
+    "@sanity/image-url": "^1.0.1",
+    "groq": "^2.33.2",
     "next": "13.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
