@@ -2,33 +2,25 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+Das ist ein Template für eine NextJs App.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Sie enthält bereits die ATOM-Ordnerstruktur. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Der Syntax für die verwendung von Material UI V5 ist vorhanden.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Sie kann via den Sanity-Client an das headless CMS Sanity angebunden werden.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Die Basic Struktur für einen Blog ist ebenfalls bereits angelegt.
+Gemanaged wird der Blog COntent von Sanity inkl. SSR.
+Du musst dafür nur ein neues Sanity Projekt erstellen und im Sanity Client die projectId und das dataset hinterlegen.
+Eine Anleitung findest Du unter https://www.sanity.io/blog/build-your-own-blog-with-sanity-and-next-js.
+// client.js
+import sanityClient from '@sanity/client'
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+export default sanityClient({
+  projectId: 'xxxx', // you can find this in sanity.json
+  dataset: 'xxxx', // or the name you chose in step 1
+  useCdn: true // `false` if you want to ensure fresh data
+})
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Der sectionWrapper (v1) ist unter Atoms bereits hinterlegt. 
