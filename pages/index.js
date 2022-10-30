@@ -6,7 +6,7 @@ import SectionWrapper from "../src/components/atoms/wrapperElements/sectionWrapp
 
 const Index = ({posts}) => {
     return (
-      <SectionWrapper>
+      <SectionWrapper fullDistanceTop fullViewHeight>
         <Typography variant="h1" gutterBottom>
           Welcome to a blog!
         </Typography>

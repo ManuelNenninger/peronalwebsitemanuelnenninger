@@ -5,9 +5,47 @@ import Divider from '@mui/material/Divider';
 
 export default function SectionWrapper(props){
   const theme = useTheme();
-  const {upperWave, lowerWave, footer, secondaryBackgroundColor, topDistance, bottomDistance } = props;
+  const {upperWave, lowerWave, footer, secondaryBackgroundColor, topDistance, bottomDistance, fullDistanceTop, fullDistanceBottom, fullViewHeight } = props;
   //Eine Wave schafft 300px distance. Hier kommen 150px padding, sowie 150px Margin des Deviders hinzu
-  const distancePadding = "150px";
+  const gridDistance = 150;
+
+  //Hier wird das Top Padding definiert
+  const upperPaddingCheck = () => {
+    if(typeof topDistance !== 'undefined'){
+      return (gridDistance + "px")
+    } else {
+      if(typeof fullDistanceTop !== 'undefined'){
+        return (gridDistance*2 + "px")
+      } else {
+        return "0px"
+      }
+    }
+  }
+  //Hier wird das Bottom Padding definiert
+  const lowerPaddingCheck = () => {
+    if(typeof bottomDistance !== 'undefined'){
+      return (gridDistance + "px")
+    } else {
+      if(typeof fullDistanceBottom !== 'undefined'){
+        return (gridDistance*2 + "px")
+      } else {
+        return "0px"
+      }
+    }
+  }
+
+  //Hier wird die Section Height definiert
+  const heightCheck = () => {
+    if(typeof footer !== 'undefined'){
+      return ("none")
+    } else {
+      if(typeof fullViewHeight !== 'undefined'){
+        return ("100vh")
+      } else {
+        return "50vh"
+      }
+    }
+  }
 
   return(
     <Box>
@@ -20,12 +58,12 @@ export default function SectionWrapper(props){
       </SvgWrapper> : <Box></Box>}
       <Box
         sx={{
-          minHeight: footer ? "none" : "50vh",
+          minHeight: heightCheck(),
           maxWidth: "1680px",
           backgroundColor: secondaryBackgroundColor ? theme.palette.secondary.main : theme.palette.primary.main,
           px: {xs: 3,  md:6},
-          pt: topDistance ? distancePadding : 0,
-          pb: bottomDistance ? distancePadding: 0,
+          pt: upperPaddingCheck(),
+          pb: lowerPaddingCheck(),
         }}
       >
       {topDistance ? (<Divider variant="middle" sx={{mb: "150px", backgroundColor: secondaryBackgroundColor ? theme.palette.primary.main : theme.palette.secondary.main}}/>) : <></>}
