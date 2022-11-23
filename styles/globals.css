@@ -24,3 +24,29 @@ a {
     background: black;
   }
 }
+
+.highlight {
+        background: url(//s2.svgbox.net/pen-brushes.svg?color=1d3a24&ic=brush-9);
+        margin: -2px -6px;
+        padding:  1px  10px;
+        color: rgb(222, 222, 210);
+    }
+
+/* Wenn next/image nicht den Grid Space füllt!
+https://dev.to/tanahmed/next-image-make-image-fill-available-space-272o */
+.custom-img {
+  object-fit: cover;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+  border-radius: 10%;
+
+}
+
+.unset-img {
+  width: 100%;
+  overflow: hidden;
+}
+.unset-img > div {
+  position: unset !important;
+}

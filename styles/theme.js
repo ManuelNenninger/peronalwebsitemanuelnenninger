@@ -5,11 +5,11 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   palette: {
      primary: {
-       main: 'rgb(222, 222, 210)',
+       main: '#F0ECE0',
        light: "rgba( 222, 222, 210, 0.6 )",
      },
     secondary: {
-      main: 'rgb(29, 58, 36)',
+      main: '#5A8093',
       light: "rgba(29, 58, 36, 0.55)",
     },
     error: {
@@ -23,12 +23,12 @@ const theme = createTheme({
       dark: '#292727',
     },
     text: {
-      main: 'rgb(29, 58, 36)',
-      secondary: 'rgb(222, 222, 210)',
+      main: '#172126',
+      secondary: '#F0ECE0',
     },
   },
-  // typography: {
-  //   //fontFamily: "'IBM Plex Mono', monospace",
+  typography: {
+        fontFamily: "'DM Sans', sans-serif",
   //   h1: {
   //     fontSize: "2.986rem",
   //   },
@@ -64,7 +64,7 @@ const theme = createTheme({
   //   button: {
   //     fontSize: "0.833rem",
   //   },
-  // }
+   }
 });
 
 export default theme;

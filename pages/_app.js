@@ -6,6 +6,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
 import theme from '../styles/theme';
 import '../styles/globals.css';
+import '../styles/fancycalltoaction.css';
 //import SeoHead from "../src/components/seoComponents/seoHead";
 //import {specialTitle, titelCreater} from "../src/components/seoComponents/seoTitles"
 //So importierst Du css Styles. --> import "../styles/consoleLogDesignCss.css"

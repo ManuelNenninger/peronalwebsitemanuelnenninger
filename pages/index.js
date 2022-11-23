@@ -1,28 +1,23 @@
-import Link from 'next/link'
 import groq from 'groq'
 import client from '../client'
 import Typography from '@mui/material/Typography';
 import SectionWrapper from "../src/components/atoms/wrapperElements/sectionWrapper"
+import HeroSection from "../src/components/organisms/herosection";
+import { Module } from "../src/components/templates/modules/modulepicker";
+import Layout from "../src/layout";
 
 const Index = ({posts}) => {
     return (
-      <SectionWrapper fullDistanceTop fullViewHeight>
-        <Typography variant="h1" gutterBottom>
-          Welcome to a blog!
-        </Typography>
-
-        {posts.length > 0 && posts.map(
-          ({ _id, title = '', slug = '', publishedAt = '' }) =>
-            slug && (
-              <li key={_id}>
-                <Link href="/post/[slug]" as={`/post/${slug.current}`}>
-                  {title}
-                </Link>{' '}
-                ({new Date(publishedAt).toDateString()})
-              </li>
-            )
-        )}
-      </SectionWrapper>
+      <>
+      <Layout>
+        <Module moduleName={"hero"}/>
+        <Module moduleName={"grid"}/>
+        <Module moduleName={"timeline"}/>
+        <Module moduleName={"offer"}/>
+        <Module moduleName={"portfolio"}/>
+        <Module moduleName={"about"}/>
+      </Layout>
+      </>
     )
 }
 
@@ -44,3 +39,21 @@ export async function getStaticProps() {
 }
 
 export default Index
+
+{/*<SectionWrapper fullDistanceTop fullViewHeight>
+  <Typography variant="h1" gutterBottom>
+    Welcome to a blog!
+  </Typography>
+
+  {posts.length > 0 && posts.map(
+    ({ _id, title = '', slug = '', publishedAt = '' }) =>
+      slug && (
+        <li key={_id}>
+          <Link href="/post/[slug]" as={`/post/${slug.current}`}>
+            {title}
+          </Link>{' '}
+          ({new Date(publishedAt).toDateString()})
+        </li>
+      )
+  )}
+</SectionWrapper>*/}
