@@ -35,9 +35,8 @@ export default function HeroDescribtion({content={}}) {
     return(
       <Typography
       variant={props.variant}
-      gutterBottom
       component="h1"
-      sx={{fontWeight: "300"}}
+      sx={{fontWeight: "700"}}
       >
           Hier sollte der HeroTitle stehen.
         {/*<HighlighterText variant={props.variant}>
@@ -56,7 +55,7 @@ export default function HeroDescribtion({content={}}) {
           alignItems="flex-start"
           sx={{ pr: { xs: "none", md: 5 }, mt: {xs: 10, md: 0} }}
         >
-          <Grid item >
+          <Grid item sx={{mb: 4}}>
             {heroTitle.length !== 0 ?
               (<PortableText
               value={heroTitle}
@@ -65,11 +64,11 @@ export default function HeroDescribtion({content={}}) {
             (<ResponsiveTypography variant="h1"/>)}
           </Grid>
           <Grid item >
-            <Typography variant="h5" component="h2" gutterBottom sx={{  }}>
+            <Typography variant="h5" component="h2" sx={{ mb: 6 }}>
               {heroDescribtion}
             </Typography>
           </Grid>
-          <Grid item sx={{ width: "100%", pt: 2 }}>
+          <Grid item sx={{ width: "100%",}}>
             <Box>
               <Grid
                 container
@@ -78,12 +77,12 @@ export default function HeroDescribtion({content={}}) {
                 alignItems="flex-start"
                 spacing={0}
               >
-                <Grid item md={6} xs={12}>
-                  <FancyButton href="/preis"/>
-                </Grid>
                 {/*<Grid item md={6} xs={12}>
-                  <ActionButton fullWidth variant="outlined" size="large" text="Zum Newsletter" secondaryColor onClick={handleClickOpen} />
+                  <FancyButton href="/preis"/>
                 </Grid>*/}
+                <Grid item md={6} xs={12}>
+                  <ActionButton fullWidth variant="contained" size="large" text="Zum Newsletter" secondaryColor className="fanceCallToAction" onClick={handleClickOpen} />
+                </Grid>
               </Grid>
             </Box>
           </Grid>

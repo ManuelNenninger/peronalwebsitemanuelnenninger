@@ -9,7 +9,7 @@ export default function HeroSection({heroContent={}}) {
   const {heroTitle, heroDescribtion, mainImage, primaryCallToAction, secondaryCallToAction} = heroContent;
 
   return (
-      <SectionWrapper topDistance >
+      <SectionWrapper topDistance fullViewHeight>
         <Grid
           container
           direction="row"

@@ -33,7 +33,7 @@ export default function ContainedActionButton(props){
       fontSize: 16,
       padding: '10px 20px',
       border: '2px solid',
-      borderRadius: 40,
+      borderRadius: 10,
       lineHeight: 1.5,
       backgroundColor: backgroundColorSelecter[props.variant],
       borderColor: borderColorSelecter[props.variant],

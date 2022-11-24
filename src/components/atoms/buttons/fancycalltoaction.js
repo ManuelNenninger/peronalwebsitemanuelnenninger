@@ -5,11 +5,9 @@ export default function FanceCallToAction({text="Test Text", href="https://googl
 
     <>
       <Box>
-        <button class="learn-more" href={href}>
-          <span class="circle" aria-hidden="true">
-            <span class="icon arrow"></span>
-          </span>
-          <span class="button-text">{text}</span>
+        <button>
+          Button
+          <span></span>
         </button>
       </Box>
     </>

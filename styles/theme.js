@@ -6,11 +6,11 @@ const theme = createTheme({
   palette: {
      primary: {
        main: '#F0ECE0',
-       light: "rgba( 222, 222, 210, 0.6 )",
+       light: "rgba( 240, 236, 224, 0.6 )",
      },
     secondary: {
       main: '#5A8093',
-      light: "rgba(29, 58, 36, 0.55)",
+      light: "rgba(90, 128, 147, 0.55)",
     },
     error: {
       main: "rgb(97, 53, 38)",
@@ -28,7 +28,9 @@ const theme = createTheme({
     },
   },
   typography: {
-        fontFamily: "'DM Sans', sans-serif",
+        fontFamily: "'Raleway', sans-serif",
+        //fontFamily: "'Noto Sans', sans-serif",
+
   //   h1: {
   //     fontSize: "2.986rem",
   //   },
