@@ -159,6 +159,15 @@ export const modules = `
       },
     }
   },
+  _type == 'blocksite' => {
+    "block": {
+      _type,
+      _key,
+      title,
+      body,
+      sectionsettings,
+    }
+  },
 `
 export const footermodule = `
 brandname,

@@ -22,6 +22,7 @@ import grid from "./modules/grid"
 import processsection from "./modules/processsection"
 import faqsection from "./modules/faqsection"
 import offersection from "./modules/offersection"
+import blocksite from "./modules/blocksite"
 
 // Object types
 import seo from "./objects/seo"
@@ -68,6 +69,7 @@ export default createSchema({
     processsection,
     faqsection,
     offersection,
+    blocksite,
     /* 3: Object types */
     seo,
     gridsize,

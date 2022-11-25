@@ -32,7 +32,6 @@ export default function OutlinedCard(props, index) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-  console.log(props);
 
   const AngebotsCard = ({ icon = "", title = "", body = [],}) => {
     return (
@@ -43,7 +42,7 @@ export default function OutlinedCard(props, index) {
           backgroundColor: theme.palette.secondary.main,
           border: 0,
           "&:hover": {
-              backgroundColor: "rgba( 90, 128, 147, 0.8 )",
+              backgroundColor: theme.palette.secondary.light,
               //opacity: [0.9, 0.8, 0.7],
               backdropFilter: "blur( 2.5px )",
             }

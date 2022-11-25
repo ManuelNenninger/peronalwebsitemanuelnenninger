@@ -5,7 +5,7 @@ import AgreementSection from "../../organisms/agreementsection";
 import ProcessTimeline from "../../organisms/processtimeline";
 import AboutSection from "../../organisms/aboutsection";
 import OfferSection from "../../organisms/offersection";
-// import MoreInforSection from "../../organisms/moreInfoSection/moreInfoSection";
+import BlockSite from "../../organisms/blocksite";
 import PortfolioSection from "../../organisms/portfoliosection";
 
 export const Module = ({
@@ -25,6 +25,7 @@ export const Module = ({
     about: AboutSection,
     portfolio: PortfolioSection,
     offer: OfferSection,
+    block: BlockSite,
   }[moduleName] ?? <></>
 
   return (
