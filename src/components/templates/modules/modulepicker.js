@@ -21,7 +21,7 @@ export const Module = ({
   const ModuleType = {
     grid: AgreementSection,
     hero: HeroSection,
-    timeline: ProcessTimeline,
+    process: ProcessTimeline,
     about: AboutSection,
     portfolio: PortfolioSection,
     offer: OfferSection,

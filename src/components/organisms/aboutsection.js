@@ -7,6 +7,8 @@ import {PortableText} from '@portabletext/react'
 import {ptComponents} from "../../../lib/sanity";
 
 export default function BoxSx({content={}}) {
+  const {aboutTitle="", body=[]} = content
+
   return (
     <SectionWrapper topDistance bottomDistance>
       <Grid
@@ -18,12 +20,12 @@ export default function BoxSx({content={}}) {
       >
         <Grid item sx={{mb: 0 }}>
           <Typography variant="h2" gutterBottom sx={{fontWeight: "700"}}>
-            {Object.keys(content).length !== 0 ? content.aboutTitle : "Title"}
+            {Object.keys(content).length !== 0 ? aboutTitle : "Title"}
           </Typography>
         </Grid>
         <Grid item>
           {Object.keys(content).length !== 0 ? (<PortableText
-            value={aboutContent.body}
+            value={body}
             components={ptComponents}
           />) : (<Typography variant="h3" gutterBottom>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

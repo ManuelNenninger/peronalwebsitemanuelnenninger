@@ -5,36 +5,67 @@ import SectionWrapper from "../src/components/atoms/wrapperElements/sectionWrapp
 import HeroSection from "../src/components/organisms/herosection";
 import { Module } from "../src/components/templates/modules/modulepicker";
 import Layout from "../src/layout";
+import { modules, modulestest, footermodule } from '../data/queries'
 
-const Index = ({posts}) => {
+const Index = (props) => {
+    const {pages=""} = props
+
     return (
       <>
-      <Layout>
-        <Module moduleName={"hero"}/>
+      <Layout {...props}>
+      {
+        pages.pageBuilder.map(function(obj, index){
+          //console.log({...Object.values(obj)[0]});
+          const content = {...Object.values(obj)[0]}
+          return (
+            <Module
+            moduleName={Object.keys(obj)[0]}
+            onVariantChange={content}
+            content={content}
+          />)
+        })
+      }
+        {/*<Module moduleName={"hero"}/>
         <Module moduleName={"grid"}/>
         <Module moduleName={"timeline"}/>
         <Module moduleName={"offer"}/>
         <Module moduleName={"portfolio"}/>
-        <Module moduleName={"about"}/>
+        <Module moduleName={"about"}/>*/}
       </Layout>
       </>
     )
 }
 
 export async function getStaticProps() {
-  //Denk dran, dass Du bei diesem query das Datum hinzufügen musst.
-    const posts = await client.fetch(groq`
-      *[_type == "post" && publishedAt < now()] | order(publishedAt desc)
+
+    const pages = await client.fetch(groq`
+      *[_type == "page" && slug.current == "index"][0]{
+        pageBuilder[]{
+          defined(_ref) => { ...@->content[0] {
+            ${modules}
+
+          }},
+          !defined(_ref) => {
+            ${modules}
+          }
+        },
+        title,
+        "slug": slug.current,
+        seo,
+      }
     `)
-    const heroContent = await client.fetch(groq`
-      *[_type == "heroSection"][0]
+    const footer = await client.fetch(groq`
+      *[_type == "footer"][0]{
+        ${footermodule}
+      }
     `)
-    console.log(heroContent);
+
     return {
       props: {
-        posts,
-        heroContent
-      }
+        pages,
+        footer,
+      },
+      revalidate: process.env.SANITY_REVALIDATE_SECRET ? parseInt(process.env.SANITY_REVALIDATE_SECRET) : parseInt(86400),
     }
 }
 

@@ -17,35 +17,37 @@ import Divider from '@mui/material/Divider';
 //Icons
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 
-const content = [
+const defaultcontent = [
   {
-    title: "Lorem ipsum",
+    mainTitle: "Lorem ipsum",
     iconname: "MailOutline",
-    body:
+    describtion:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
   },
   {
-    title: "Lorem ipsum",
+    mainTitle: "Lorem ipsum",
     iconname: "MailOutline",
-    body:
+    describtion:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
   },
   {
-    title: "Lorem ipsum",
+    mainTitle: "Lorem ipsum",
     iconname: "MailOutline",
-    body:
+    describtion:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
   },
   {
-    title: "Lorem ipsum",
+    mainTitle: "Lorem ipsum",
     iconname: "MailOutline",
-    body:
+    describtion:
       "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
   }
 ];
 
-export default function CustomizedTimeline() {
-  const TimeLineObject = ({ title, iconname, body }, index) => {
+export default function CustomizedTimeline({content={}}) {
+
+  const {sectionTitle="Headline Text", processbuilder=[], } = content;
+  const TimeLineObject = ({ mainTitle, describtion, iconname="MailOutline", }, index) => {
     const Icon = MuiIcons[iconname];
     return (
       <>
@@ -67,10 +69,10 @@ export default function CustomizedTimeline() {
           </TimelineSeparator>
           <TimelineContent sx={{ py: 10, px: {sm: 2, md:10}, maxWidth: {sm: "none" ,md:"60vw", lg: "50vw"} }}>
             <Typography variant="h2" component="div">
-              {title}
+              {mainTitle}
             </Typography>
             <Divider sx={{borderBottomWidth: "thick", my: 1, borderColor: "secondary.main"}} />
-            <Typography>{body}</Typography>
+            <Typography>{describtion}</Typography>
           </TimelineContent>
         </TimelineItem>
       </>
@@ -88,7 +90,7 @@ export default function CustomizedTimeline() {
       >
         <Grid item sx={{ pb: 10 }}>
           <Typography variant="h2" component="div" sx={{fontWeight: "700"}}>
-            Headline Text
+            {sectionTitle}
           </Typography>
         </Grid>
         <Grid item sx={{  pl: {xs: 0, sm: 5, md:15} }}>
@@ -98,9 +100,16 @@ export default function CustomizedTimeline() {
           padding: 0,
         },
       }}>
-            {content.map(function (obj, index) {
+          {
+            Object.keys(content).length !== 0 ?
+            processbuilder.map(function (obj, index) {
               return TimeLineObject(obj, index);
-            })}
+            })
+            :
+            defaultcontent.map(function (obj, index) {
+              return TimeLineObject(obj, index);
+            })
+          }
           </Timeline>
         </Grid>
       </Grid>

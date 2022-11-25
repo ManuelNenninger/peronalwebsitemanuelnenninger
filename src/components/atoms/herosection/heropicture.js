@@ -3,11 +3,10 @@ import Image from "next/image";
 import HeroPicture from "../../../../public/bild.png";
 import {urlFor} from "../../../../lib/sanity";
 
-export default function heroPicture({content={}}) {
-  let { mainImage } = content;
+export default function heroPicture({mainImage={}}) {
 
   let url;
-  if(mainImage){
+  if(Object.keys(mainImage).length !== 0 ){
     url = (urlFor(mainImage).url());
   }
 
@@ -20,7 +19,7 @@ export default function heroPicture({content={}}) {
           alt="Picture of the author"
           width={500}
           height={500}
-          src={mainImage ? url : HeroPicture}
+          src={Object.keys(mainImage).length !== 0 ? url : HeroPicture}
           className="custom-img"/>
         {/*</Box>*/}
         {/*</BlobWrapper>*/}

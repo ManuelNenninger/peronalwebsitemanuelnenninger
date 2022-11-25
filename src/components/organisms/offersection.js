@@ -12,23 +12,24 @@ import SectionWrapper from "../atoms/wrapperElements/sectionWrapper"
 
 const ContentArray = [
   {
-    Icon: <LocalDrinkTwoToneIcon fontSize="large" />,
-    Titel: "Lorem Ipsum",
-    Describtion: "lala"
+    icon: <LocalDrinkTwoToneIcon fontSize="large" />,
+    title: "Lorem Ipsum",
+    body: "lala"
   },
   {
-    Icon: <LocalDrinkTwoToneIcon fontSize="large" />,
-    Titel: "Lorem Ipsum und mehr",
-    Describtion: "lala"
+    icon: <LocalDrinkTwoToneIcon fontSize="large" />,
+    title: "Lorem Ipsum und mehr",
+    body: "lala"
   },
   {
-    Icon: <LocalDrinkTwoToneIcon fontSize="large" />,
-    Titel: "Lorem Ipsum",
-    Describtion: "lala"
+    icon: <LocalDrinkTwoToneIcon fontSize="large" />,
+    title: "Lorem Ipsum",
+    body: "lala"
   }
 ];
 
-export default function BoxSx() {
+export default function BoxSx({content={}}) {
+  const {sectiontitle="Headline Text", offercardbuilder=[]} = content;
 
   const MainGrid = () => {
     return (
@@ -41,9 +42,16 @@ export default function BoxSx() {
           spacing={{xs: 0, md: 5}}
           sx={{ width: "100%" }}
         >
-          {ContentArray.map(function (ContentObject, index) {
-            return OfferCard(ContentObject, index);
-          })}
+          {
+            Object.keys(content).length !== 0 ?
+            offercardbuilder.map(function (ContentObject, index) {
+              return OfferCard(ContentObject, index);
+            })
+            :
+            ContentArray.map(function (ContentObject, index) {
+              return OfferCard(ContentObject, index);
+            })
+          }
         </Grid>
       </>
     );
@@ -60,7 +68,7 @@ export default function BoxSx() {
       >
         <Grid item sx={{pb: 10}}>
           <Typography variant="h2" gutterBottom sx={{fontWeight: "700"}}>
-            h1. Heading
+            {sectiontitle}
           </Typography>
         </Grid>
         <Grid item sx={{ width: "100%",  }}>

@@ -13,14 +13,13 @@ import {PortableText} from '@portabletext/react'
 import {ptComponents} from "../../../../lib/sanity";
 
 
-export default function HeroDescribtion({content={}}) {
+export default function HeroDescribtion({heroTitle, heroDescribtion, primaryCallToAction, secondaryCallToAction}) {
   const [open, setOpen] = React.useState(false);
 
   const theme = useTheme();
   // const value = useAppContext();
   // let { heroContent } = value.content;
   //Content from Sanity
-  let {heroDescribtion="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", heroTitle=[], primaryCallToAction="" } = content;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -38,7 +37,7 @@ export default function HeroDescribtion({content={}}) {
       component="h1"
       sx={{fontWeight: "700"}}
       >
-          Hier sollte der HeroTitle stehen.
+          Das ist  der Hero Title
         {/*<HighlighterText variant={props.variant}>
           nur besser
         </HighlighterText>*/}
@@ -56,7 +55,7 @@ export default function HeroDescribtion({content={}}) {
           sx={{ pr: { xs: "none", md: 5 }, mt: {xs: 10, md: 0} }}
         >
           <Grid item sx={{mb: 4}}>
-            {heroTitle.length !== 0 ?
+            {typeof heroTitl === 'array' ?
               (<PortableText
               value={heroTitle}
               components={ptComponents}

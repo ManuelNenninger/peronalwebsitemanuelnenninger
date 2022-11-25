@@ -9,6 +9,7 @@ import AppBar from "././components/organisms/appbar";
 //     { ssr: false }
 // )
 export default function Layout(props){
+  const {footer={}} = props;
   const theme = useTheme();
 
   return(
@@ -27,7 +28,7 @@ export default function Layout(props){
         >
           <AppBar>
             <main>{props.children}</main>
-            <Footer />
+            <Footer content={footer}/>
           </AppBar>
         </Box>
       </Box>

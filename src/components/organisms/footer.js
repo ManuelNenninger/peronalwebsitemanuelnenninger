@@ -44,7 +44,6 @@ export default function Footer({ content = {} }) {
     Object.keys(footersocial).length !== 0
       ? footerrowbuilder.length + 1
       : footerrowbuilder.length;
-  console.log(columnsNumber);
 
   const SocialGrid = (props) => {
     return (
@@ -210,7 +209,7 @@ export default function Footer({ content = {} }) {
           }}
         >
           <Typography variant="h2" gutterBottom>
-            {Object.keys(content).length !== 0 ? brandname : "Brandname"}
+            {Object.keys(content).length !== 0 ? brandname : "Brandnamé"}
           </Typography>
         </Grid>
         <Grid item xs={12} md={8} sx={{ width: "100%" }}>

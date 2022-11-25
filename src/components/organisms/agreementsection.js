@@ -14,6 +14,7 @@ import * as MuiIcons from '@mui/icons-material'
 import Divider from '@mui/material/Divider';
 
 export default function BoxSx({content={}}) {
+
   const theme = useTheme();
   const ref1 = useRef(null);
   const isInViewport = useIsInViewport(ref1);

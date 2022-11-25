@@ -5,8 +5,14 @@ import HeroDescribtion from "../atoms/heroSection/herodescribtion";
 import HeroPicture from "../atoms/heroSection/heropicture";
 import SectionWrapper from "../atoms/wrapperElements/sectionWrapper"
 
-export default function HeroSection({heroContent={}}) {
-  const {heroTitle, heroDescribtion, mainImage, primaryCallToAction, secondaryCallToAction} = heroContent;
+export default function HeroSection({content={}, onVariantChange={}}) {
+  let {
+    heroTitle="Hier sollte der HeroTitle stehen.",
+    heroDescribtion="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    mainImage={},
+    primaryCallToAction={},
+    secondaryCallToAction={}
+  } = onVariantChange;
 
   return (
       <SectionWrapper topDistance fullViewHeight>
