@@ -5,10 +5,16 @@ import Layout from "../src/layout";
 import { modules, modulestest, footermodule } from '../data/queries'
 
 export default function Site(props){
-  const {pages=""} = props
+  const {pages={}} = props
+  const {seo={}} = pages;
 
   return(
     <>
+      {Object.keys(seo).length !== 0 &&
+        <SeoHead
+          seo={seo}
+        />
+      }
       <Layout {...props}>
       {
         pages.pageBuilder.map(function(obj, index){

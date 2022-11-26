@@ -1,17 +1,22 @@
 import groq from 'groq'
 import client from '../client'
-import Typography from '@mui/material/Typography';
-import SectionWrapper from "../src/components/atoms/wrapperElements/sectionWrapper"
-import HeroSection from "../src/components/organisms/herosection";
+import SeoHead from "../src/components/seo/seohead";
 import { Module } from "../src/components/templates/modules/modulepicker";
 import Layout from "../src/layout";
 import { modules, modulestest, footermodule } from '../data/queries'
+import { NextSeo } from 'next-seo';
+
 
 const Index = (props) => {
-    const {pages=""} = props
-
+    const {pages={}} = props
+    const {seo={}} = pages;
     return (
       <>
+        {Object.keys(seo).length !== 0 &&
+          <SeoHead
+            seo={seo}
+          />
+        }
       <Layout {...props}>
       {
         pages.pageBuilder.map(function(obj, index){
