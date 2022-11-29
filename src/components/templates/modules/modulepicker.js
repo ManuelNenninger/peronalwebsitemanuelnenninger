@@ -7,6 +7,7 @@ import AboutSection from "../../organisms/aboutsection";
 import OfferSection from "../../organisms/offersection";
 import BlockSite from "../../organisms/blocksite";
 import PortfolioSection from "../../organisms/portfoliosection";
+import VisionSection from "../../organisms/visionsection";
 
 export const Module = ({
   index,
@@ -26,6 +27,7 @@ export const Module = ({
     portfolio: PortfolioSection,
     offer: OfferSection,
     block: BlockSite,
+    vision: VisionSection,
   }[moduleName] ?? <></>
 
   return (

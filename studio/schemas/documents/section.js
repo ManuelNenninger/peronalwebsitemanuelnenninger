@@ -26,6 +26,9 @@ export default {
         { type: 'faqsection' },
         { type: 'offersection' },
         { type: 'blocksite' },
+        { type: 'portfoliosection' },
+        { type: 'visionsection' },
+
         // { type: 'marquee' },
         // { type: 'dividerPhoto' }
       ],

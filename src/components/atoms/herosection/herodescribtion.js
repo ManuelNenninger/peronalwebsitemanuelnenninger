@@ -15,7 +15,6 @@ import {ptComponents} from "../../../../lib/sanity";
 
 export default function HeroDescribtion({heroTitle, heroDescribtion, primaryCallToAction, secondaryCallToAction}) {
   const [open, setOpen] = React.useState(false);
-
   const theme = useTheme();
   // const value = useAppContext();
   // let { heroContent } = value.content;
@@ -55,7 +54,7 @@ export default function HeroDescribtion({heroTitle, heroDescribtion, primaryCall
           sx={{ pr: { xs: "none", md: 5 }, mt: {xs: 10, md: 0} }}
         >
           <Grid item sx={{mb: 4}}>
-            {typeof heroTitl === 'array' ?
+            {typeof heroTitl !== 'string' ?
               (<PortableText
               value={heroTitle}
               components={ptComponents}

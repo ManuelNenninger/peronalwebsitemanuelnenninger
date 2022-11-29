@@ -18,6 +18,14 @@ const highlightRender = props => (
   <span style={{ backgroundColor: 'rgb(29, 58, 36)', color: "rgb(222, 222, 210)", }}>{props.children}</span>
 )
 
+const gradientTextIcon = () => (
+ <span style={{ fontWeight: 'bold' }}>G</span>
+)
+
+const gradientTextRender = props => (
+  <span style={{ backgroundImage: "linear-gradient(45deg, #f3ec78, #af4261)", backgroundClip: "text", textFillColor: "transparent" }}>{props.children}</span>
+)
+
 export default {
   title: 'Block Content',
   name: 'blockContent',
@@ -55,6 +63,14 @@ export default {
             blockEditor: {
               icon: highlightIcon,
               render: highlightRender
+            }
+          },
+          {
+            title: 'Gradient Text',
+            value: 'gradientText',
+            blockEditor: {
+              icon: gradientTextIcon,
+              render: gradientTextRender
             }
           },
         ],

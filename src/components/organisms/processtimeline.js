@@ -48,6 +48,7 @@ export default function CustomizedTimeline({content={}}) {
 
   const {sectionTitle="Headline Text", processbuilder=[], } = content;
   const TimeLineObject = ({ mainTitle, describtion, iconname="MailOutline", }, index) => {
+
     const Icon = MuiIcons[iconname];
     return (
       <>

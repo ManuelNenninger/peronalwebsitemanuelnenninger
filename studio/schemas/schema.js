@@ -23,6 +23,8 @@ import processsection from "./modules/processsection"
 import faqsection from "./modules/faqsection"
 import offersection from "./modules/offersection"
 import blocksite from "./modules/blocksite"
+import portfoliosection from "./modules/portfoliosection"
+import visionsection from "./modules/visionsection"
 
 // Object types
 import seo from "./objects/seo"
@@ -36,6 +38,7 @@ import footerlink from "./objects/footerlink"
 import footersocial from "./objects/footersocial"
 import sectionsettings from "./objects/sectionsettings"
 import offercard from "./objects/offercard"
+import portfoliocard from "./objects/portfoliocard"
 
 // Object types
 
@@ -70,6 +73,8 @@ export default createSchema({
     faqsection,
     offersection,
     blocksite,
+    portfoliosection,
+    visionsection,
     /* 3: Object types */
     seo,
     gridsize,
@@ -82,5 +87,6 @@ export default createSchema({
     footersocial,
     sectionsettings,
     offercard,
+    portfoliocard
   ]),
 })

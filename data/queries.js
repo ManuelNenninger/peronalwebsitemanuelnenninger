@@ -14,6 +14,7 @@ export const blocksprocessstep = `
     _type,
     _key,
     mainTitle,
+    iconname,
     describtion,
     mainImage,
   },
@@ -49,12 +50,24 @@ export const blockspecialpricecard = `
   },
 `
 
-// Construct our "faqrow GROQ
+// Construct our "offercard GROQ
 export const blockoffercard = `
   _type == 'offercard' => {
     _type,
     _key,
     title,
+    body,
+  },
+`
+
+// Construct our "offercard GROQ
+export const blockportfoliocard = `
+  _type == 'portfoliocard' => {
+    _type,
+    _key,
+    title,
+    url,
+    color,
     body,
   },
 `
@@ -108,6 +121,15 @@ export const modules = `
       _type,
       _key,
       sectionsettings,
+      sectiontitle,
+      body,
+    }
+  },
+  _type == 'visionsection' => {
+    "vision": {
+      _type,
+      _key,
+      sectionsettings,
       aboutTitle,
       body,
     }
@@ -156,6 +178,16 @@ export const modules = `
       sectiontitle,
       offercardbuilder[]{
         ${blockoffercard}
+      },
+    }
+  },
+  _type == 'portfoliosection' => {
+    "portfolio": {
+      _type,
+      _key,
+      sectiontitle,
+      portfoliobuilder[]{
+        ${blockportfoliocard}
       },
     }
   },

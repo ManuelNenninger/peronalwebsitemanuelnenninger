@@ -32,8 +32,8 @@ export default function OutlinedCard(props, index) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
   const AngebotsCard = ({ icon = "", title = "", body = [],}) => {
+
     return (
       <>
         <Card variant="outlined" sx={{
@@ -90,8 +90,8 @@ export default function OutlinedCard(props, index) {
               <ExpandMoreIcon fontSize="large" color="primary" />{" "}
             </ExpandMore>{" "}
           </CardActions>
-          <Collapse in={expanded} timeout="auto" unmountOnExit>
-            {typeof body === 'array' ?
+          <Collapse in={expanded} timeout="auto" unmountOnExit sx={{px: 2}}>
+            { body.length !== 0 ?
               <PortableText
                 value={body}
                 components={ptComponents}
