@@ -26,7 +26,7 @@ export default function HeroSection({content={}, onVariantChange={}}) {
           //Alternative Positionierung durch padding & margin
           //sx={{ pr: { xs: "none", md: 15 }, mt: {xs: 10, md: 0} }}
         >
-          <Grid item xs={12} md={6} sx={{  }}>
+          <Grid item xs={12} md={6} sx={{ }}>
             <HeroDescribtion heroTitle={heroTitle} heroDescribtion={heroDescribtion} primaryCallToAction={primaryCallToAction} secondaryCallToAction={secondaryCallToAction}/>
           </Grid>
           <Grid item xs={12} md={6} sx={{width: '100%', height: '100%', position: 'relative', }}>

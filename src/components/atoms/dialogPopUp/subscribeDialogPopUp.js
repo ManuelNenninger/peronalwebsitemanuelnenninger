@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import ActionButton from "../buttons/actionButton"
 import EmailSubscribtion from "./eMailSubscribtionForm";
 import Grid from '@mui/material/Grid';
+import ContactForm from "./contactform";
 
 export default function DialogOrder({open, handleClose, order }){
   const theme = useTheme();
@@ -25,19 +26,20 @@ export default function DialogOrder({open, handleClose, order }){
       aria-describedby="alert-dialog-slide-description"
     >
     <Box sx={{ backgroundColor: theme.palette.primary.main, p:4 }}>
-      <DialogTitle color="text.primary">{"Du würdest gerne mehr erfahren?"}</DialogTitle>
-      <DialogContent>
-        <DialogContentText id="alert-dialog-slide-description">
-          <Typography variant="body1" color="text.primary">
-            Wir wollen mit Risoa unseren Beitrag leisten die Umwelt zu schützen.
-            {/*Hinterlasse uns deine E-Mail und wir Informieren dich ausführlicher über unser Produkt.*/}
-          </Typography>
-          <Typography variant="body1" color="text.primary" >
-            Wenn Du dich also interessierst, welche spannenden Projekte wir als nächstes angehen, möchtest über Änderungen am Produkt mit abstimmen, oder dich einfach nur für Start Ups interessierst, lass uns gerne deine Mail da.
-            {/*Du verpasst somit auch keine Sonderangebote mehr und wirst als erster über Neuigkeiten erfahren!*/}
-          </Typography>
-        </DialogContentText>
-      </DialogContent>
+    <DialogTitle color="text.primary">{"Say Hello"}</DialogTitle>
+    <DialogContent>
+      <DialogContentText id="alert-dialog-slide-description">
+        <Typography variant="body1" color="text.primary">
+          Hinterlass mir deine Mail und schreibe mir kurz wie ich dich unterstützen kann.
+        </Typography>
+        <Typography variant="body1" color="text.primary" >
+          Bist Du interessiert an einer Blog Website? Einem eCommerce Shop oder willst mir einfach nur Hallo sagen?
+        </Typography>
+        <Typography variant="body1" color="text.primary" >
+          Ich freue mich über jede Nachricht :)
+        </Typography>
+      </DialogContentText>
+    </DialogContent>
       <DialogActions>
       <Grid
         container
@@ -46,7 +48,7 @@ export default function DialogOrder({open, handleClose, order }){
         alignItems="center"
       >
       <Grid item sx={{width: "100%"}}>
-        <EmailSubscribtion />
+        <ContactForm />
       </Grid>
       </Grid>
       </DialogActions>

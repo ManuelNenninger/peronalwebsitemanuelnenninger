@@ -51,7 +51,7 @@ export default function HeroDescribtion({heroTitle, heroDescribtion, primaryCall
           direction="column"
           justifyContent="center"
           alignItems="flex-start"
-          sx={{ pr: { xs: "none", md: 5 }, mt: {xs: 10, md: 0} }}
+          sx={{ pr: { xs: "none", md: 5 }, mt: {xs: 0, md: 0} }}
         >
           <Grid item sx={{mb: 4}}>
             {typeof heroTitl !== 'string' ?
@@ -79,7 +79,7 @@ export default function HeroDescribtion({heroTitle, heroDescribtion, primaryCall
                   <FancyButton href="/preis"/>
                 </Grid>*/}
                 <Grid item md={6} xs={12}>
-                  <ActionButton fullWidth variant="contained" size="large" text="Zum Newsletter" secondaryColor className="fanceCallToAction" onClick={handleClickOpen} />
+                  <ActionButton fullWidth variant="contained" size="large" text="Say Hello" secondaryColor className="fanceCallToAction" onClick={handleClickOpen} />
                 </Grid>
               </Grid>
             </Box>

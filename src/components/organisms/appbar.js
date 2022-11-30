@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import ActionButton from "../atoms/buttons/actionButton"
+import SubscribeDialogPopUp from "../atoms/dialogPopUp/subscribeDialogPopUp";
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -38,6 +39,15 @@ const navItems = [];
 export default function DrawerAppBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -95,7 +105,7 @@ export default function DrawerAppBar(props) {
             ))}
           </Box>
           <Box>
-            <ActionButton variant="contained" text={"Call me"} secondaryColor href={"https://www.google.de"} />
+            <ActionButton variant="contained" text={"Say Hello"} secondaryColor onClick={handleClickOpen} />
           </Box>
         </Toolbar>
       </AppBar>
@@ -123,6 +133,7 @@ export default function DrawerAppBar(props) {
       <Box component="main">
         <Toolbar />
         {props.children}
+        <SubscribeDialogPopUp open={open} handleClose={handleClose} />
       </Box>
     </Box>
   );

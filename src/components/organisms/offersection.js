@@ -40,7 +40,6 @@ export default function BoxSx({content={}}) {
           justifyContent="center"
           alignItems="flex-start"
           spacing={{xs: 0, md: 5}}
-          sx={{ width: "100%" }}
         >
           {
             Object.keys(content).length !== 0 ?
@@ -64,10 +63,12 @@ export default function BoxSx({content={}}) {
         direction="column"
         justifyContent="flex-start"
         alignItems="center"
-        sx={{ }}
       >
         <Grid item sx={{pb: 10}}>
-          <Typography variant="h2" gutterBottom sx={{fontWeight: "700"}}>
+          <Typography variant="h2" gutterBottom sx={{fontWeight: "700", display: {xs: "none", sm: "block"}}}>
+            {sectiontitle}
+          </Typography>
+          <Typography variant="h3" gutterBottom sx={{fontWeight: "700", display: {xs: "block", sm: "none"}}}>
             {sectiontitle}
           </Typography>
         </Grid>

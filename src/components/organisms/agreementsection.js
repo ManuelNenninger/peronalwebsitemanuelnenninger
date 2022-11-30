@@ -75,7 +75,10 @@ export default function BoxSx({content={}}) {
               <SvgIcon component={MuiIcons[iconname]}  sx={{fontSize: 60, mb: 2}} />
             </Grid>
             <Grid item>
-              <Typography variant="h2" gutterBottom sx={{fontWeight: "400"}}>
+              <Typography variant="h2" gutterBottom sx={{fontWeight: "400", display: {xs: "none", sm: "block"} }}>
+                {title}
+              </Typography>
+              <Typography variant="h3" gutterBottom sx={{fontWeight: "400",  display: {xs: "block", sm: "none"}}}>
                 {title}
               </Typography>
               <Grid item>
@@ -151,7 +154,10 @@ export default function BoxSx({content={}}) {
           sx={{}}
         >
           <Grid item sx={{width: "100%", pb: 10}}>
-            <Typography align="center" variant="h2" gutterBottom sx={{fontWeight: "700"}}>
+            <Typography align="center" variant="h2" gutterBottom sx={{fontWeight: "700", display: {xs: "none", sm: "block"}}}>
+              {Object.keys(content).length !== 0 ? sectionTitle : sectionTitleDefault}
+            </Typography>
+            <Typography align="center" variant="h3" gutterBottom sx={{fontWeight: "700", display: {xs: "block", sm: "none"}}}>
               {Object.keys(content).length !== 0 ? sectionTitle : sectionTitleDefault}
             </Typography>
           </Grid>

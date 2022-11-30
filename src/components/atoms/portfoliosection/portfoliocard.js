@@ -66,7 +66,10 @@ export default function PorftolioCard({url="https://www.google.de", title="Test"
                 }
             }}
           >
-            <Typography sx={{ position: "relative" }} variant="h1" color="text.secondary">
+            <Typography sx={{ position: "relative", display: {xs: "none", sm: "block"} }} variant="h1" color="text.secondary">
+              {title}
+            </Typography>
+            <Typography sx={{ position: "relative", display: {xs: "block", sm: "none"} }} variant="h3" color="text.secondary">
               {title}
             </Typography>
           </Box>

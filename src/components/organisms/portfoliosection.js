@@ -32,7 +32,10 @@ export default function BoxSx({content={}}) {
         spacing={5}
       >
         <Grid item sx={{ pb: 10 }}>
-          <Typography variant="h2" gutterBottom sx={{fontWeight: "700"}}>
+          <Typography  variant="h2" gutterBottom sx={{fontWeight: "700", display: {xs: "none", sm: "block"}}}>
+            {sectiontitle}
+          </Typography>
+          <Typography align="center" variant="h3" gutterBottom sx={{fontWeight: "700", display: {xs: "block", sm: "none"}}}>
             {sectiontitle}
           </Typography>
         </Grid>

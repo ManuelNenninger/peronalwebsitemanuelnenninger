@@ -9,7 +9,7 @@ import { useTheme } from '@mui/material/styles';
 
 export default function BoxSx({content={}}) {
   const theme = useTheme();
-  const {sectionTitle="Vision", body="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamnonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,sed diam voluptua."} = content;
+  const {sectiontitle="Vision", body="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamnonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,sed diam voluptua."} = content;
 
   return (
     <SectionWrapper topDistance>
@@ -21,7 +21,7 @@ export default function BoxSx({content={}}) {
       >
         {" "}
         <Typography variant="h4" gutterBottom sx={{borderBottom: 4, borderColor: theme.palette.secondary.main}}>
-          {sectionTitle}
+          {sectiontitle}
         </Typography>
         {typeof body !== 'string' ?
           (<PortableText

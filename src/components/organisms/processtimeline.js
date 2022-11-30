@@ -69,7 +69,10 @@ export default function CustomizedTimeline({content={}}) {
             <TimelineConnector sx={{ bgcolor: "secondary.main" }} />
           </TimelineSeparator>
           <TimelineContent sx={{ py: 10, px: {sm: 2, md:10}, maxWidth: {sm: "none" ,md:"60vw", lg: "50vw"} }}>
-            <Typography variant="h2" component="div">
+            <Typography variant="h2" component="div" sx={{fontWeight: 300, display: {xs: "none", sm: "block"}}}>
+              {mainTitle}
+            </Typography>
+            <Typography variant="h3" component="div" sx={{fontWeight: 300, display: {xs: "block", sm: "none"}}}>
               {mainTitle}
             </Typography>
             <Divider sx={{borderBottomWidth: "thick", my: 1, borderColor: "secondary.main"}} />
@@ -90,12 +93,15 @@ export default function CustomizedTimeline({content={}}) {
         alignItems="flex-start"
       >
         <Grid item sx={{ pb: 10 }}>
-          <Typography variant="h2" component="div" sx={{fontWeight: "700"}}>
+          <Typography  variant="h2" gutterBottom sx={{fontWeight: "700", display: {xs: "none", sm: "block"}}}>
+            {sectionTitle}
+          </Typography>
+          <Typography align="center" variant="h3" gutterBottom sx={{fontWeight: "700", display: {xs: "block", sm: "none"}}}>
             {sectionTitle}
           </Typography>
         </Grid>
         <Grid item sx={{  pl: {xs: 0, sm: 5, md:15} }}>
-          <Timeline position="right" sx={{
+          <Timeline position="right" sx={{maxWidth: "100vw",
         [`& .${timelineItemClasses.root}:before`]: {
           flex: 0,
           padding: 0,

@@ -121,7 +121,7 @@ export const modules = `
       _type,
       _key,
       sectionsettings,
-      sectiontitle,
+      aboutTitle,
       body,
     }
   },
@@ -130,7 +130,7 @@ export const modules = `
       _type,
       _key,
       sectionsettings,
-      aboutTitle,
+      sectiontitle,
       body,
     }
   },

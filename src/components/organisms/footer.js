@@ -125,7 +125,7 @@ export default function Footer({ content = {} }) {
                 item
                 xs={12}
                 md={parseInt(12 / columnsNumber)}
-                sx={{  borderRight: 1, px: 1, py: 5 }}
+                sx={{  borderRight: {sm: 0, md: 1}, px: 1, py: 5 }}
               >
                 <Grid
                   container
