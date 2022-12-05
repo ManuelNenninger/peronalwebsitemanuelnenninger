@@ -1,8 +1,8 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import HeroDescribtion from "../atoms/heroSection/herodescribtion";
-import HeroPicture from "../atoms/heroSection/heropicture";
+import HeroDescribtion from "../atoms/herosection/herodescribtion";
+import HeroPicture from "../atoms/herosection/heropicture";
 import SectionWrapper from "../atoms/wrapperElements/sectionWrapper"
 
 export default function HeroSection({content={}, onVariantChange={}}) {
