@@ -1,4 +1,4 @@
-import NotFoundPage from "./404";
+import NotFoundPage from "../404";
 
 export default function Post(){
   return (
