@@ -12,7 +12,7 @@ export default function SectionWrapper(props){
   const isInViewport = useIsInViewport(ref1);
   const {upperWave, lowerWave, footer, secondaryBackgroundColor, topDistance, bottomDistance, fullDistanceTop, fullDistanceBottom, fullViewHeight, deviderTop, deviderBottom, transition } = props;
   //Eine Wave schafft 300px distance. Hier kommen 150px padding, sowie 150px Margin des Deviders hinzu
-  const gridDistance = 150;
+  const gridDistance = 160;
 
   //Hier wird das Top Padding definiert
   const upperPaddingCheck = () => {

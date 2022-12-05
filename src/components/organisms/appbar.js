@@ -15,6 +15,7 @@ import Button from "@mui/material/Button";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import ActionButton from "../atoms/buttons/actionButton"
 import SubscribeDialogPopUp from "../atoms/dialogPopUp/subscribeDialogPopUp";
+import Link from "next/link";
 
 function ElevationScroll(props) {
   const { children, window } = props;
@@ -97,7 +98,9 @@ export default function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            {brandname}
+            <Link href="/">
+              {brandname}
+            </Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.length !== 0 && navItems.map((item) => (

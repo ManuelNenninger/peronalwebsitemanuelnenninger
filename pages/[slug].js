@@ -2,11 +2,20 @@ import groq from 'groq'
 import client from '../client'
 import { Module } from "../src/components/templates/modules/modulepicker";
 import Layout from "../src/layout";
+import SeoHead from "../src/components/seo/seohead";
+import NotFoundPage from "./404";
 import { modules, modulestest, footermodule } from '../data/queries'
+import { useRouter } from 'next/router'
 
 export default function Site(props){
   const {pages={}} = props
   const {seo={}} = pages;
+  const router = useRouter()
+
+
+  if(!router.isFallback && (Object.keys(pages).length === 0)){
+    return <NotFoundPage statusCode={404}/>
+  }
 
   return(
     <>

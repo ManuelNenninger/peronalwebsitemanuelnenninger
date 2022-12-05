@@ -39,7 +39,7 @@ export default function PorftolioCard({url="https://www.google.de", title="Test"
           border: 0
         }}
       >
-        <CardActionArea disableSpacing href={url}>
+        <CardActionArea href={url}>
           <CardMedia
             sx={{ position: "relative", backgroundColor: color }}
             component="img"

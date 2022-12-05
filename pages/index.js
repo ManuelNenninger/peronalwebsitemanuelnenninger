@@ -10,7 +10,7 @@ import { NextSeo } from 'next-seo';
 const Index = (props) => {
     const {pages={}} = props
     const {seo={}} = pages;
-    console.log(pages); 
+
     return (
       <>
         {Object.keys(seo).length !== 0 &&
