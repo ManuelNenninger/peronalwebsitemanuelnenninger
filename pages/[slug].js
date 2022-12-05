@@ -11,12 +11,18 @@ export default function Site(props){
   const {pages={}} = props
   const {seo={}} = pages;
   const router = useRouter()
-
+  console.log("Jetzt wird der Slug gerendered!");
+  console.log("Die Daten sind: ");
+  console.log(pages);
 
   if(!router.isFallback && (Object.keys(pages).length === 0)){
     return <NotFoundPage statusCode={404}/>
   }
 
+  if(!router.isFallback){
+    console.log("Jetzt wird nach if gerendered!");
+    console.log("Die Daten sind: ");
+    console.log(pages);
   return(
     <>
       {Object.keys(seo).length !== 0 &&
@@ -45,7 +51,7 @@ export default function Site(props){
         <Module moduleName={"about"}/>*/}
       </Layout>
     </>
-  )
+  )}
 }
 
 export async function getStaticPaths() {
