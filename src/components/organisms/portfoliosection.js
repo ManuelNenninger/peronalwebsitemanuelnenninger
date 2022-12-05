@@ -23,7 +23,7 @@ export default function BoxSx({content={}}) {
   };
 
   return (
-    <SectionWrapper topDistance >
+    <SectionWrapper topDistance transition>
       <Grid
         container
         direction="column"

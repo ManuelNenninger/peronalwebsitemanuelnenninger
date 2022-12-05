@@ -26,7 +26,7 @@ export default function Layout(props){
           //px: 6,
           }}
         >
-          <AppBar>
+          <AppBar content={footer}>
             <main>{props.children}</main>
             <Footer content={footer}/>
           </AppBar>

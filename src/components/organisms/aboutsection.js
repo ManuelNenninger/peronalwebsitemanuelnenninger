@@ -10,7 +10,7 @@ export default function BoxSx({content={}}) {
   const {aboutTitle="", body=[]} = content
 
   return (
-    <SectionWrapper topDistance bottomDistance>
+    <SectionWrapper topDistance bottomDistance transition>
       <Grid
         container
         direction="column"

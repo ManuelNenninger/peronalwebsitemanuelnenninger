@@ -40,6 +40,8 @@ export default function DrawerAppBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const {content={}} = props;
+  const {brandname="Brand"} = content;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -56,7 +58,7 @@ export default function DrawerAppBar(props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        BrandName
+        {brandname}
       </Typography>
       <Divider />
       <List>
@@ -95,7 +97,7 @@ export default function DrawerAppBar(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            BrandName
+            {brandname}
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.length !== 0 && navItems.map((item) => (

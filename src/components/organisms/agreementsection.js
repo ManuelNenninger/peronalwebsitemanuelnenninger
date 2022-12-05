@@ -2,9 +2,6 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
-import {  useRef } from "react";
-import useIsInViewport from "../atoms/visibilityFunction/visibilityFunction"
-import Grow from "@mui/material/Grow";
 import SvgIcon from "@mui/material/SvgIcon";
 // import { useAppContext } from "../../../appContext";
 import {PortableText} from '@portabletext/react'
@@ -16,8 +13,6 @@ import Divider from '@mui/material/Divider';
 export default function BoxSx({content={}}) {
 
   const theme = useTheme();
-  const ref1 = useRef(null);
-  const isInViewport = useIsInViewport(ref1);
   //console.log("isInViewport1: ", isInViewport);
   // const value = useAppContext();
   // let { agreementGridContent } = value.content.agreementContent;
@@ -139,14 +134,8 @@ export default function BoxSx({content={}}) {
   };
 
   return (
-    <SectionWrapper topDistance >
-      <Grow
-         in={isInViewport}
-         style={{ transformOrigin: "0 0 0" }}
-         {...(isInViewport ? { timeout: 2000 } : {})}
-       >
+    <SectionWrapper topDistance transition>
         <Grid
-          ref={ref1}
           container
           direction="column"
           justifyContent="flex-start"
@@ -165,7 +154,6 @@ export default function BoxSx({content={}}) {
             <MainGrid />
           </Grid>
         </Grid>
-      </Grow>
     </SectionWrapper>
   );
 }

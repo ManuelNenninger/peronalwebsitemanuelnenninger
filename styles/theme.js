@@ -10,6 +10,7 @@ const theme = createTheme({
      },
     secondary: {
       main: '#5A8093',
+      // main: 'rgb(13, 82, 161)',
       light: "rgba(90, 128, 147, 0.8)",
     },
     error: {

@@ -6,13 +6,14 @@ import SectionWrapper from "../atoms/wrapperElements/sectionWrapper"
 import {PortableText} from '@portabletext/react'
 import {ptComponents} from "../../../lib/sanity";
 import { useTheme } from '@mui/material/styles';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 
 export default function BoxSx({content={}}) {
   const theme = useTheme();
   const {sectiontitle="Vision", body="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamnonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,sed diam voluptua."} = content;
 
   return (
-    <SectionWrapper topDistance>
+    <SectionWrapper topDistance transition>
       <Grid
         container
         direction="column"
@@ -21,7 +22,7 @@ export default function BoxSx({content={}}) {
       >
         {" "}
         <Typography variant="h4" gutterBottom sx={{borderBottom: 4, borderColor: theme.palette.secondary.main}}>
-          {sectiontitle}
+          <FormatQuoteIcon sx={{fontSize: "80px"}}/>
         </Typography>
         {typeof body !== 'string' ?
           (<PortableText

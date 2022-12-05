@@ -15,7 +15,7 @@ export default function HeroSection({content={}, onVariantChange={}}) {
   } = onVariantChange;
 
   return (
-      <SectionWrapper topDistance fullViewHeight>
+      <SectionWrapper topDistance fullViewHeight transition>
         <Grid
           container
           direction="row"

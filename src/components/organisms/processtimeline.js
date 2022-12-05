@@ -85,7 +85,7 @@ export default function CustomizedTimeline({content={}}) {
 
 
   return (
-    <SectionWrapper topDistance >
+    <SectionWrapper topDistance transition>
       <Grid
         container
         direction="column"

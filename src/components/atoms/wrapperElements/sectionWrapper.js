@@ -2,10 +2,15 @@ import Box from "@mui/material/Box";
 import SvgWrapper from "./svgWaveWrapper"
 import { useTheme } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
+import useIsInViewport from "../visibilityFunction/visibilityFunction"
+import Grow from "@mui/material/Grow";
+import {  useRef } from "react";
 
 export default function SectionWrapper(props){
   const theme = useTheme();
-  const {upperWave, lowerWave, footer, secondaryBackgroundColor, topDistance, bottomDistance, fullDistanceTop, fullDistanceBottom, fullViewHeight, deviderTop, deviderBottom } = props;
+  const ref1 = useRef(null);
+  const isInViewport = useIsInViewport(ref1);
+  const {upperWave, lowerWave, footer, secondaryBackgroundColor, topDistance, bottomDistance, fullDistanceTop, fullDistanceBottom, fullViewHeight, deviderTop, deviderBottom, transition } = props;
   //Eine Wave schafft 300px distance. Hier kommen 150px padding, sowie 150px Margin des Deviders hinzu
   const gridDistance = 150;
 
@@ -47,6 +52,20 @@ export default function SectionWrapper(props){
     }
   }
 
+  const GrowFunction = ({children}) =>{
+    if(typeof transition !== 'undefined'){
+      return (
+        <Grow
+           in={isInViewport}
+           style={{ transformOrigin: "0 0 0" }}
+           {...(isInViewport ? { timeout: 2000 } : {})}
+         >{children}</Grow>
+      )
+    } else {
+      return(<>{children}</>)
+    }
+  }
+
   return(
     <Box>
       {upperWave ? <SvgWrapper>
@@ -56,20 +75,23 @@ export default function SectionWrapper(props){
         d="M0,96L120,128C240,160,480,224,720,245.3C960,267,1200,245,1320,234.7L1440,224L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z">
       </path>
       </SvgWrapper> : <Box></Box>}
-      <Box
-        sx={{
-          minHeight: heightCheck(),
-          maxWidth: "1680px",
-          backgroundColor: secondaryBackgroundColor ? theme.palette.secondary.main : theme.palette.primary.main,
-          px: {xs: 1, md: 10},
-          pt: upperPaddingCheck(),
-          pb: lowerPaddingCheck(),
-        }}
-      >
-      {(topDistance & deviderTop )? (<Divider variant="middle" sx={{mb: "150px", backgroundColor: secondaryBackgroundColor ? theme.palette.primary.main : theme.palette.secondary.main}}/>) : <></>}
-        {props.children}
-      {(bottomDistance & deviderBottom) ? (<Divider variant="middle" sx={{mt: "150px", backgroundColor: secondaryBackgroundColor ? theme.palette.primary.main : theme.palette.secondary.main}}/>) : <></>}
-      </Box>
+      <GrowFunction>
+        <Box
+          ref={ref1}
+          sx={{
+            minHeight: heightCheck(),
+            maxWidth: "1680px",
+            backgroundColor: secondaryBackgroundColor ? theme.palette.secondary.main : theme.palette.primary.main,
+            px: {xs: 1, md: 10},
+            pt: upperPaddingCheck(),
+            pb: lowerPaddingCheck(),
+          }}
+        >
+        {(topDistance & deviderTop )? (<Divider variant="middle" sx={{mb: "150px", backgroundColor: secondaryBackgroundColor ? theme.palette.primary.main : theme.palette.secondary.main}}/>) : <></>}
+          {props.children}
+        {(bottomDistance & deviderBottom) ? (<Divider variant="middle" sx={{mt: "150px", backgroundColor: secondaryBackgroundColor ? theme.palette.primary.main : theme.palette.secondary.main}}/>) : <></>}
+        </Box>
+      </GrowFunction>
       {lowerWave ? <SvgWrapper>
         <path
           fill={theme.palette.secondary.main}
