@@ -20,7 +20,7 @@ const Index = (props) => {
         }
       <Layout {...props}>
       {
-        pages.pageBuilder.map(function(obj, index){
+        pages.pageBuilder?.map(function(obj, index){
           //console.log({...Object.values(obj)[0]});
           const content = {...Object.values(obj)[0]}
           return (

@@ -200,7 +200,7 @@ export default function Footer({ content = {} }) {
         <Grid
           item
           xs={12}
-          md={4}
+          md={4.5}
           sx={{
             width: "100%",
             py: 5,
@@ -208,11 +208,14 @@ export default function Footer({ content = {} }) {
             display: { xs: "flex", md: "block" }
           }}
         >
-          <Typography variant="h2" gutterBottom>
+          <Typography variant="h2" gutterBottom align="center" sx={{display: {xs:"block",md:"none"}}}>
+            {Object.keys(content).length !== 0 ? brandname : "Brandnamé"}
+          </Typography>
+          <Typography variant="h2" gutterBottom sx={{display: {xs:"none",md:"block"}}}>
             {Object.keys(content).length !== 0 ? brandname : "Brandnamé"}
           </Typography>
         </Grid>
-        <Grid item xs={12} md={8} sx={{ width: "100%" }}>
+        <Grid item xs={12} md={7.5} sx={{ width: "100%" }}>
           <InfoGrid />
         </Grid>
       </Grid>

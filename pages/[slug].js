@@ -11,18 +11,12 @@ export default function Site(props){
   const {pages={}} = props
   const {seo={}} = pages;
   const router = useRouter()
-  console.log("Jetzt wird der Slug gerendered!");
-  console.log("Die Daten sind: ");
-  console.log(pages);
 
   if(!router.isFallback && (Object.keys(pages).length === 0)){
     return <NotFoundPage statusCode={404}/>
   }
 
   if(!router.isFallback){
-    console.log("Jetzt wird nach if gerendered!");
-    console.log("Die Daten sind: ");
-    console.log(pages);
   return(
     <>
       {Object.keys(seo).length !== 0 &&
@@ -32,7 +26,7 @@ export default function Site(props){
       }
       <Layout {...props}>
       {
-        pages.pageBuilder.map(function(obj, index){
+        pages.pageBuilder?.map(function(obj, index){
           //console.log({...Object.values(obj)[0]});
           const content = {...Object.values(obj)[0]}
           return (
