@@ -4,12 +4,11 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import MarkunreadIcon from "@mui/icons-material/Markunread";
-import { useTheme } from '@mui/material/styles';
-import { styled } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 
 export default function MultilineTextFields() {
   const theme = useTheme();
-
 
   // const [value, setValue] = React.useState("Controlled");
   //
@@ -17,37 +16,34 @@ export default function MultilineTextFields() {
   //   setValue(event.target.value);
   // };
 
-
   const StyledTextField = styled(TextField)({
     label: {
-      color: theme.palette.secondary.main
+      color: theme.palette.secondary.main,
     },
     input: {
-      color: theme.palette.secondary.main
+      color: theme.palette.secondary.main,
     },
     fieldset: {
       borderColor: theme.palette.secondary.main,
     },
-    '& .MuiInput-underline:after': {
-    borderBottomColor: theme.palette.secondary.main,
-  },
+    "& .MuiInput-underline:after": {
+      borderBottomColor: theme.palette.secondary.main,
+    },
     "& label.Mui-focused": {
-      color: theme.palette.secondary.main
+      color: theme.palette.secondary.main,
     },
     "& .MuiOutlinedInput-root": {
       "& fieldset": {
         borderColor: theme.palette.secondary.main,
-
       },
       "&.Mui-focused fieldset": {
-        borderColor: theme.palette.secondary.main
-      }
-    }
+        borderColor: theme.palette.secondary.main,
+      },
+    },
   });
 
   return (
-    <Box
-    >
+    <Box>
       <form
         action="https://gmail.us17.list-manage.com/subscribe/post?u=400f776a9804292f43ee55016&amp;id=0d0ca739b4&amp;f_id=00c24fe0f0"
         method="post"
@@ -92,7 +88,7 @@ export default function MultilineTextFields() {
               id="mce-MMERGE6"
               fullWidth
               label="Nachricht"
-              placeholder="Placeholder"
+              placeholder="Say Hello"
               multiline
               variant="standard"
             />{" "}
@@ -112,8 +108,7 @@ export default function MultilineTextFields() {
             </div>
             {/*Von MailChimp - Ende*/}
             <Button
-            color="secondary"
-              type="submit"
+              color="secondary"
               value="Subscribe"
               name="subscribe"
               id="mc-embedded-subscribe"

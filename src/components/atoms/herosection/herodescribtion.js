@@ -54,6 +54,7 @@ export default function HeroDescribtion({heroTitle, heroDescribtion, primaryCall
           sx={{ pr: { xs: "none", md: 5 }, mt: {xs: 0, md: 0} }}
         >
           <Grid item sx={{mb: 4}}>
+          {/*Fehler Variable.*/}
             {typeof heroTitl !== 'string' ?
               (<PortableText
               value={heroTitle}
