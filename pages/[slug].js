@@ -4,8 +4,8 @@ import { Module } from "../src/components/templates/modules/modulepicker";
 import Layout from "../src/layout";
 import SeoHead from "../src/components/seo/seohead";
 import NotFoundPage from "./404";
-import { modules, modulestest, footermodule } from "../data/queries";
 import { useRouter } from "next/router";
+import { getPageData, getFooterData } from "../lib/api";
 
 export default function Site(props) {
   const { pages = {} } = props;
@@ -67,31 +67,9 @@ export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params;
 
-  const pages = await client.fetch(
-    groq`
-    *[_type == "page" && slug.current == $slug][0]{
-      pageBuilder[]{
-        defined(_ref) => { ...@->content[0] {
-          ${modules}
-        }},
-        !defined(_ref) => {
-          ${modules}
-        }
-      },
-      title,
-      "slug": slug.current,
-      seo,
-    }
-  `,
-    { slug }
-  );
-  const footer = await client.fetch(groq`
-    *[_type == "footer"][0]{
-      ${footermodule}
-    }
-  `);
+  const pages = await getPageData(slug);
+  const footer = await getFooterData();
 
-  console.log(pages);
   return {
     props: {
       pages,
