@@ -4,6 +4,7 @@ import { Module } from "../src/components/templates/modules/modulepicker";
 import Layout from "../src/layout";
 import SeoHead from "../src/components/seo/seohead";
 import NotFoundPage from "./404";
+import Fullpageloader from "../src/components/atoms/loader/fullpageloader";
 import { useRouter } from "next/router";
 import { getPageData, getFooterData } from "../lib/api";
 
@@ -12,8 +13,17 @@ export default function Site(props) {
   const { seo = {} } = pages;
   const router = useRouter();
 
-  if (!router.isFallback && Object.keys(pages).length === 0) {
+  // If fallback is over and no page data is availible, show 404.js
+  if (!router.isFallback && !pages?.slug) {
     return <NotFoundPage statusCode={404} />;
+  }
+
+  // If the page is not yet Server-side generated, router.isFallback === true
+  // getStaticPaths fallback is true. So this code gets executed. If false, 404.js is showen.
+  // getStaticPaths & -Props is executed in fallback-Mode.
+  // If no loading sign is shown, the screen is simple white.
+  if (router.isFallback) {
+    return <Fullpageloader />;
   }
 
   // If the page is not yet generated, router.isFallback === true

@@ -5,8 +5,13 @@ import { modules, modulestest, footermodule } from "../data/queries";
 import { NextSeo } from "next-seo";
 import { getIndexPageData, getFooterData } from "../lib/api";
 import { useGetPages } from "../src/components/atoms/fetcher/fetch";
+import NotFoundPage from "./404";
+import Fullpageloader from "../src/components/atoms/loader/fullpageloader";
+import { useRouter } from "next/router";
 
 const Index = (props) => {
+  const router = useRouter();
+
   let { pages = {} } = props;
   const { seo = {} } = pages;
 
@@ -14,6 +19,14 @@ const Index = (props) => {
   //   initialData: pages,
   //   slug: "index",
   // });
+
+  if (!router.isFallback && !pages?.slug) {
+    return <NotFoundPage statusCode={404} />;
+  }
+
+  if (router.isFallback) {
+    return <Fullpageloader />;
+  }
 
   return (
     <>
