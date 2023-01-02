@@ -7,10 +7,12 @@ import NotFoundPage from "./404";
 import Fullpageloader from "../src/components/atoms/loader/fullpageloader";
 import { useRouter } from "next/router";
 import { getPageData, getFooterData } from "../lib/api";
+import PreviewAlert from "../src/components/atoms/loader/previewalert";
 
 export default function Site(props) {
   const { pages = {} } = props;
   const { seo = {} } = pages;
+  const { preview = false } = props;
   const router = useRouter();
 
   // If fallback is over and no page data is availible, show 404.js
@@ -35,6 +37,7 @@ export default function Site(props) {
       <>
         {Object.keys(seo).length !== 0 && <SeoHead seo={seo} />}
         <Layout {...props}>
+          {preview && <PreviewAlert />}
           {pages.pageBuilder?.map(function (obj, index) {
             //console.log({...Object.values(obj)[0]});
             const content = { ...Object.values(obj)[0] };
@@ -76,14 +79,16 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params;
+  const { preview = false, previewData } = context;
 
-  const pages = await getPageData(slug);
+  const pages = await getPageData(slug, preview);
   const footer = await getFooterData();
 
   return {
     props: {
       pages,
       footer,
+      preview,
     },
     revalidate: process.env.SANITY_REVALIDATE_SECRET
       ? parseInt(process.env.SANITY_REVALIDATE_SECRET)
