@@ -24,6 +24,7 @@ export default function Site(props) {
 
   // If fallback is over and no page data is availible, show 404.js
   if (!router.isFallback && Object.keys(pages).length === 0) {
+    console.log("Zeige die 404 Page", pages);
     return <NotFoundPage statusCode={404} />;
   }
 
@@ -90,6 +91,8 @@ export async function getStaticProps(context) {
   console.log("Die Preview ist: ", preview);
   const pages = await getPageData(slug, preview);
   const footer = await getFooterData();
+
+  console.log("Die Pages Daten in gsp sind: ", pages);
 
   return {
     props: {
