@@ -8,28 +8,28 @@ import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import LocalDrinkTwoToneIcon from "@mui/icons-material/LocalDrinkTwoTone";
 import OfferCard from "../atoms/offersection.js/offercard";
-import SectionWrapper from "../atoms/wrapperElements/sectionWrapper"
+import SectionWrapper from "../atoms/wrapperElements/sectionWrapper";
 
 const ContentArray = [
   {
     icon: <LocalDrinkTwoToneIcon fontSize="large" />,
     title: "Lorem Ipsum",
-    body: "lala"
+    body: "lala",
   },
   {
     icon: <LocalDrinkTwoToneIcon fontSize="large" />,
     title: "Lorem Ipsum und mehr",
-    body: "lala"
+    body: "lala",
   },
   {
     icon: <LocalDrinkTwoToneIcon fontSize="large" />,
     title: "Lorem Ipsum",
-    body: "lala"
-  }
+    body: "lala",
+  },
 ];
 
-export default function BoxSx({content={}}) {
-  const {sectiontitle="Headline Text", offercardbuilder=[]} = content;
+export default function BoxSx({ content = {} }) {
+  const { sectiontitle = "Headline Text", offercardbuilder = [] } = content;
 
   const MainGrid = () => {
     return (
@@ -39,40 +39,45 @@ export default function BoxSx({content={}}) {
           direction="row"
           justifyContent="center"
           alignItems="flex-start"
-          spacing={{xs: 0, md: 5}}
+          spacing={{ xs: 0, md: 5 }}
         >
-          {
-            Object.keys(content).length !== 0 ?
-            offercardbuilder.map(function (ContentObject, index) {
-              return OfferCard(ContentObject, index);
-            })
-            :
-            ContentArray.map(function (ContentObject, index) {
-              return OfferCard(ContentObject, index);
-            })
-          }
+          {Object.keys(content).length !== 0
+            ? offercardbuilder.map(function (ContentObject, index) {
+                return OfferCard(ContentObject, index);
+              })
+            : ContentArray.map(function (ContentObject, index) {
+                return OfferCard(ContentObject, index);
+              })}
         </Grid>
       </>
     );
   };
 
   return (
-    <SectionWrapper topDistance transition>
+    <SectionWrapper topDistance>
       <Grid
         container
         direction="column"
         justifyContent="flex-start"
         alignItems="center"
       >
-        <Grid item sx={{pb: 10}}>
-          <Typography variant="h2" gutterBottom sx={{fontWeight: "700", display: {xs: "none", sm: "block"}}}>
+        <Grid item sx={{ pb: 10 }}>
+          <Typography
+            variant="h2"
+            gutterBottom
+            sx={{ fontWeight: "700", display: { xs: "none", sm: "block" } }}
+          >
             {sectiontitle}
           </Typography>
-          <Typography variant="h3" gutterBottom sx={{fontWeight: "700", display: {xs: "block", sm: "none"}}}>
+          <Typography
+            variant="h3"
+            gutterBottom
+            sx={{ fontWeight: "700", display: { xs: "block", sm: "none" } }}
+          >
             {sectiontitle}
           </Typography>
         </Grid>
-        <Grid item sx={{ width: "100%",  }}>
+        <Grid item sx={{ width: "100%" }}>
           <MainGrid />
         </Grid>
       </Grid>
