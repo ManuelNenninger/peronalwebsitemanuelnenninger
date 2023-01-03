@@ -92,6 +92,13 @@ export async function getStaticProps(context) {
   const pages = await getPageData(slug, preview);
   const footer = await getFooterData();
 
+  if (!pages?.slug) {
+    console.log("In GST wird notFound gezeigt.");
+    return {
+      notFound: true, //showing 404 page
+    };
+  }
+
   console.log("Die Pages Daten in gsp sind: ", pages);
 
   return {
