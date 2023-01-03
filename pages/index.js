@@ -15,10 +15,10 @@ const Index = (props) => {
   let { pages = {} } = props;
   const { seo = {} } = pages;
 
-  const { data: revalidatedPages, error } = useGetPages({
-    initialData: pages,
-    slug: "index",
-  });
+  // const { data: revalidatedPages, error } = useGetPages({
+  //   initialData: pages,
+  //   slug: "index",
+  // });
 
   if (!router.isFallback && !pages?.slug) {
     return <NotFoundPage statusCode={404} />;
@@ -32,7 +32,7 @@ const Index = (props) => {
     <>
       {Object.keys(seo).length !== 0 && <SeoHead seo={seo} />}
       <Layout {...props}>
-        {revalidatedPages.pageBuilder?.map(function (obj, index) {
+        {pages.pageBuilder?.map(function (obj, index) {
           //console.log({...Object.values(obj)[0]});
           const content = { ...Object.values(obj)[0] };
           return (
