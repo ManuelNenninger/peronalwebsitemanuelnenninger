@@ -57,7 +57,7 @@ export default function HeroDescribtion({
           alignItems="flex-start"
           sx={{ pr: { xs: "none", md: 5 }, mt: { xs: 0, md: 0 } }}
         >
-          <Grid item sx={{ mb: 4 }}>
+          <Grid item sx={{ mb: { xs: 4, md: 0 } }}>
             {/*Fehler Variable.*/}
             {typeof heroTitl !== "string" ? (
               <PortableText value={heroTitle} components={ptComponents} />
@@ -66,7 +66,7 @@ export default function HeroDescribtion({
             )}
           </Grid>
           <Grid item>
-            <Typography variant="h5" component="h2" sx={{ mb: 6 }}>
+            <Typography variant="h4" component="h2" sx={{ mb: 6 }}>
               {heroDescribtion}
             </Typography>
           </Grid>
