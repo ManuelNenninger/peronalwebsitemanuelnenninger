@@ -16,8 +16,4 @@ export default async function enablePreview(req, res) {
   res.setPreviewData({});
   res.writeHead(307, { Location: `/${page.slug}` });
   res.end();
-
-  res.status(200).json({ message: "You may continue!" });
-  // res.setPreviewData({})
-  // res.end('Preview mode enabled')
 }
