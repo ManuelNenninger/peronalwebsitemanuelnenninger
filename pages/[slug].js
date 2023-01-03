@@ -16,11 +16,11 @@ export default function Site(props) {
   const { preview = false } = props;
   const router = useRouter();
 
-  const { data: revalidatedPages, error } = useGetPages({
-    initialData: pages,
-    slug: pages?.slug,
-    preview: preview,
-  });
+  // const { data: revalidatedPages, error } = useGetPages({
+  //   initialData: pages,
+  //   slug: pages?.slug,
+  //   preview: preview,
+  // });
 
   // If fallback is over and no page data is availible, show 404.js
   if (!router.isFallback && Object.keys(pages).length === 0) {
@@ -45,7 +45,7 @@ export default function Site(props) {
         {Object.keys(seo).length !== 0 && <SeoHead seo={seo} />}
         <Layout {...props}>
           {preview && <PreviewAlert />}
-          {revalidatedPages.pageBuilder?.map(function (obj, index) {
+          {pages.pageBuilder?.map(function (obj, index) {
             //console.log({...Object.values(obj)[0]});
             const content = { ...Object.values(obj)[0] };
             return (
