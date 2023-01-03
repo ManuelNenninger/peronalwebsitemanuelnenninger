@@ -7,6 +7,7 @@ import NotFoundPage from "./404";
 import Fullpageloader from "../src/components/atoms/loader/fullpageloader";
 import { useRouter } from "next/router";
 import { getPageData, getFooterData } from "../lib/api";
+import { useGetPages } from "../src/components/atoms/fetcher/fetch";
 import PreviewAlert from "../src/components/atoms/loader/previewalert";
 
 export default function Site(props) {
@@ -15,8 +16,14 @@ export default function Site(props) {
   const { preview = false } = props;
   const router = useRouter();
 
+  const { data: revalidatedPages, error } = useGetPages({
+    initialData: pages,
+    slug: pages?.slug,
+    preview: preview,
+  });
+
   // If fallback is over and no page data is availible, show 404.js
-  if (!router.isFallback && !pages?.slug) {
+  if (!router.isFallback && Object.keys(pages).length === 0) {
     return <NotFoundPage statusCode={404} />;
   }
 
@@ -38,7 +45,7 @@ export default function Site(props) {
         {Object.keys(seo).length !== 0 && <SeoHead seo={seo} />}
         <Layout {...props}>
           {preview && <PreviewAlert />}
-          {pages.pageBuilder?.map(function (obj, index) {
+          {revalidatedPages.pageBuilder?.map(function (obj, index) {
             //console.log({...Object.values(obj)[0]});
             const content = { ...Object.values(obj)[0] };
             return (
@@ -80,7 +87,7 @@ export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
-
+  console.log("Die Preview ist: ", preview);
   const pages = await getPageData(slug, preview);
   const footer = await getFooterData();
 

@@ -16,7 +16,7 @@ export default function Fullpageloader() {
       >
         {" "}
         <Grid item>
-          <CircularProgress />
+          <CircularProgress color="secondary" />
         </Grid>
       </Grid>
     </SectionWrapper>

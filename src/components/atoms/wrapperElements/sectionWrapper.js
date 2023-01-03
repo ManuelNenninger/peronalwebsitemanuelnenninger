@@ -16,6 +16,7 @@ export default function SectionWrapper(props) {
     footer,
     secondaryBackgroundColor,
     topDistance,
+    firstSectionDistance,
     bottomDistance,
     fullDistanceTop,
     fullDistanceBottom,
@@ -35,7 +36,11 @@ export default function SectionWrapper(props) {
       if (typeof fullDistanceTop !== "undefined") {
         return gridDistance * 2 + "px";
       } else {
-        return "0px";
+        if (typeof firstSectionDistance !== "undefined") {
+          return { xs: 5, md: gridDistance + "px" };
+        } else {
+          return "0px";
+        }
       }
     }
   };
