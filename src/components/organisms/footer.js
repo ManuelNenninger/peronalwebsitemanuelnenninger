@@ -11,7 +11,7 @@ import PolicyOutlinedIcon from "@mui/icons-material/PolicyOutlined";
 import Divider from "@mui/material/Divider";
 import Link from "next/link";
 // import { useAppContext } from "../../appContext";
-import SectionWrapper from "../atoms/wrapperElements/sectionWrapper"
+import SectionWrapper from "../atoms/wrapperElements/sectionWrapper";
 
 export default function Footer({ content = {} }) {
   // let value = useAppContext();
@@ -22,26 +22,26 @@ export default function Footer({ content = {} }) {
         metaTitle: "Service",
         linkbuilder: [
           { linkname: "Versand", url: "/versand" },
-          { linkname: "FAQ", url: "/faq" }
-        ]
+          { linkname: "FAQ", url: "/faq" },
+        ],
       },
       {
         metaTitle: "Rechtliches",
         linkbuilder: [
           { linkname: "Impressum", url: "/impressum" },
-          { linkname: "Darenschutzerklärung", url: "/datenschutz" }
-        ]
-      }
+          { linkname: "Darenschutzerklärung", url: "/datenschutz" },
+        ],
+      },
     ],
     footersocial = {
       facebook: "https://www.facebook.com",
       instagram: "https://www.instagram.com",
-      twitter: "https://twitter.com/"
-    }
+      twitter: "https://twitter.com/",
+    },
   } = content;
 
   const columnsNumber =
-    Object.keys(footersocial).length !== 0
+    footersocial !== null
       ? footerrowbuilder.length + 1
       : footerrowbuilder.length;
 
@@ -51,37 +51,43 @@ export default function Footer({ content = {} }) {
         <Grid
           container
           direction="row"
-          justifyContent="space-around"
+          justifyContent={{ md: "flex-start", xs: "space-around" }}
           alignItems="flex-start"
           sx={{}}
         >
-          <Grid item>
-            <IconButton
-              color="secondary"
-              aria-label="add an alarm"
-              href={footersocial.instagram}
-            >
-              <InstagramIcon />
-            </IconButton>
-          </Grid>
-          <Grid item>
-            <IconButton
-              color="secondary"
-              aria-label="add an alarm"
-              href={footersocial.facebook}
-            >
-              <FacebookRoundedIcon />
-            </IconButton>
-          </Grid>
-          <Grid item>
-            <IconButton
-              color="secondary"
-              aria-label="add an alarm"
-              href={footersocial.twitter}
-            >
-              <TwitterIcon />
-            </IconButton>
-          </Grid>
+          {footersocial?.instagram && (
+            <Grid item>
+              <IconButton
+                color="secondary"
+                aria-label="add an alarm"
+                href={footersocial.instagram}
+              >
+                <InstagramIcon />
+              </IconButton>
+            </Grid>
+          )}
+          {footersocial?.facebook && (
+            <Grid item>
+              <IconButton
+                color="secondary"
+                aria-label="add an alarm"
+                href={footersocial.facebook}
+              >
+                <FacebookRoundedIcon />
+              </IconButton>
+            </Grid>
+          )}
+          {footersocial?.twitter && (
+            <Grid item>
+              <IconButton
+                color="secondary"
+                aria-label="add an alarm"
+                href={footersocial.twitter}
+              >
+                <TwitterIcon />
+              </IconButton>
+            </Grid>
+          )}
         </Grid>
       </>
     );
@@ -94,7 +100,7 @@ export default function Footer({ content = {} }) {
           item
           xs={12}
           md={parseInt(12 / columnsNumber)}
-          sx={{  px: 3, py: 5 }}
+          sx={{ px: 3, py: 5 }}
         >
           <Grid
             container
@@ -102,7 +108,7 @@ export default function Footer({ content = {} }) {
             justifyContent="flex-start"
             alignItems={{ xs: "center", md: "flex-start" }}
             spacing={1}
-            sx={{ }}
+            sx={{}}
           >
             <Grid item>
               <Typography variant="h4" gutterBottom>
@@ -125,7 +131,7 @@ export default function Footer({ content = {} }) {
                 item
                 xs={12}
                 md={parseInt(12 / columnsNumber)}
-                sx={{  borderRight: {sm: 0, md: 1}, px: 1, py: 5 }}
+                sx={{ borderRight: { sm: 0, md: 1 }, px: 1, py: 5 }}
               >
                 <Grid
                   container
@@ -133,7 +139,7 @@ export default function Footer({ content = {} }) {
                   justifyContent="flex-start"
                   alignItems={{ xs: "center", md: "flex-start" }}
                   spacing={1}
-                  sx={{ mr: 5,  }}
+                  sx={{ mr: 5 }}
                 >
                   <Grid item xs={12}>
                     <Typography variant="h4" gutterBottom>
@@ -175,27 +181,27 @@ export default function Footer({ content = {} }) {
           sx={{
             float: "right",
             "& > div": {
-              pr: 5
+              pr: 5,
               //borderRight: 1,
-            }
+            },
           }}
         >
           <GridLinks />
-          <GridSocial />
+          {footersocial && <GridSocial />}
         </Grid>
       </>
     );
   };
 
   return (
-    <SectionWrapper footer >
-      <Divider sx={{borderColor: "borderColor.dark"}} />
+    <SectionWrapper footer>
+      <Divider sx={{ borderColor: "borderColor.dark" }} />
       <Grid
         container
         direction="row"
         justifyContent={{ xs: "center", md: "flex-end" }}
         alignItems="flex-start"
-        sx={{ pb: 5, pt: 0,  }}
+        sx={{ pb: 5, pt: 0 }}
       >
         <Grid
           item
@@ -205,13 +211,22 @@ export default function Footer({ content = {} }) {
             width: "100%",
             py: 5,
             justifyContent: { xs: "center", md: "none" },
-            display: { xs: "flex", md: "block" }
+            display: { xs: "flex", md: "block" },
           }}
         >
-          <Typography variant="h2" gutterBottom align="center" sx={{display: {xs:"block",md:"none"}}}>
+          <Typography
+            variant="h2"
+            gutterBottom
+            align="center"
+            sx={{ display: { xs: "block", md: "none" } }}
+          >
             {Object.keys(content).length !== 0 ? brandname : "Brandnamé"}
           </Typography>
-          <Typography variant="h2" gutterBottom sx={{display: {xs:"none",md:"block"}}}>
+          <Typography
+            variant="h2"
+            gutterBottom
+            sx={{ display: { xs: "none", md: "block" } }}
+          >
             {Object.keys(content).length !== 0 ? brandname : "Brandnamé"}
           </Typography>
         </Grid>

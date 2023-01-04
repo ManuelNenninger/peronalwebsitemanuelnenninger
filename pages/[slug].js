@@ -12,6 +12,7 @@ import PreviewAlert from "../src/components/atoms/loader/previewalert";
 
 export default function Site({ pages = {}, footer = {}, preview = false }) {
   const { seo = {} } = pages;
+  console.log("hier ist footer: ", footer);
   const router = useRouter();
   // const { data: revalidatedPages, error } = useGetPages({
   //   initialData: pages,
@@ -89,7 +90,7 @@ export async function getStaticProps(context) {
   const pages = await getPageData(slug, preview);
   const footer = await getFooterData();
   console.log("Die Daten sind da für Pages: ", pages);
-
+  console.log("Die Footer Daten sind: ", footer);
   if (!pages?.slug) {
     console.log("Es wird notFound angezeigt");
     return {
