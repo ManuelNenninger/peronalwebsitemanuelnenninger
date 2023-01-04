@@ -41,7 +41,7 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
     return (
       <>
         {Object.keys(seo).length !== 0 && <SeoHead seo={seo} />}
-        <Layout layout={layout}>
+        <Layout footer={footer}>
           {preview && <PreviewAlert />}
           {pages.pageBuilder?.map(function (obj, index) {
             //console.log({...Object.values(obj)[0]});
