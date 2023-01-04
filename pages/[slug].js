@@ -10,8 +10,6 @@ import { getPageData, getFooterData } from "../lib/api";
 import { useGetPages } from "../src/components/atoms/fetcher/fetch";
 import PreviewAlert from "../src/components/atoms/loader/previewalert";
 
-import { modules, footermodule } from "../data/queries";
-
 export default function Site({ pages = {}, footer = {}, preview = false }) {
   const { seo = {} } = pages;
   console.log("hier ist footer: ", footer);
@@ -92,25 +90,7 @@ export async function getStaticProps(context) {
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
   console.log("In getStaticProps wird der request erstellt");
-  //const pages = await getPageData(slug, preview);
-  const pages = await client.fetch(
-    groq`
-  *[_type == "page" && slug.current == $slug][0]{
-    pageBuilder[]{
-      defined(_ref) => { ...@->content[0] {
-        ${modules}
-      }},
-      !defined(_ref) => {
-        ${modules}
-      }
-    },
-    title,
-    "slug": slug.current,
-    seo,
-  }
-`,
-    { slug }
-  );
+  const pages = await getPageData(slug, preview);
   const footer = await getFooterData();
   console.log("Die Daten sind da für Pages: ", pages);
   console.log("Die Footer Daten sind: ", footer);
