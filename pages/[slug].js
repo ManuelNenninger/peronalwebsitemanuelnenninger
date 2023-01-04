@@ -41,7 +41,7 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
     return (
       <>
         {Object.keys(seo).length !== 0 && <SeoHead seo={seo} />}
-        <Layout footer={footer}>
+        <Layout layout={layout}>
           {preview && <PreviewAlert />}
           {pages.pageBuilder?.map(function (obj, index) {
             //console.log({...Object.values(obj)[0]});
@@ -70,7 +70,6 @@ export async function getStaticPaths() {
   const paths = await client.fetch(
     `*[_type == "page" && defined(slug.current)][].slug.current`
   );
-  console.log("GetStaticPaths zeigt: ", paths);
   //In paths sind nun alle slugs enthalten die Du auf Sainty in der Cloud hast.
   //getStaticPaths is required for dynamic SSG pages. So for [slug].js-files
   //Die JSON Struktur sieht z.B wie folgt aus:  params: { slug: 'impressum' },
@@ -86,28 +85,14 @@ export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
-  console.log("Die Preview ist: ", preview);
-  // const pages = await getPageData(slug, preview);
-  // const footer = await getFooterData();
+  const pages = await getPageData(slug, preview);
+  const footer = await getFooterData();
 
-  // if (!pages?.slug) {
-  //   console.log("In GST wird notFound gezeigt.");
-  //   return {
-  //     notFound: true, //showing 404 page
-  //   };
-  // }
-  let pages = {};
-  let footer = {};
-  try {
-    pages = await getPageData(slug, preview);
-    footer = await getFooterData();
-  } catch (err) {
+  if (!pages?.slug) {
     return {
       notFound: true, //showing 404 page
     };
   }
-
-  console.log("Die Pages Daten in GetStaticProps sind: ", pages);
 
   return {
     props: {
