@@ -16,6 +16,8 @@ export async function costumeFetcher([url, token]) {
 const basicFetcher = (url) => fetch(url).then((res) => res.json());
 
 export const useGetPages = ({ initialData, slug, preview }) => {
+  console.log("useGetPages wurde angefragt für: ", slug);
+  console.log("Preview ist: ", preview);
   const token = { slug: slug, preview: preview };
   return useSWR(
     [`api/pages`, token],

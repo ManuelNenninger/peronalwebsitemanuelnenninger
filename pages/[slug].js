@@ -17,11 +17,6 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
   console.log("hier ist preview: ", preview);
 
   const router = useRouter();
-  // const { data: revalidatedPages, error } = useGetPages({
-  //   initialData: pages,
-  //   slug: pages?.slug,
-  //   preview: preview,
-  // });
 
   // If fallback is over and no page data is availible, show 404.js
   if (!router.isFallback && !pages?.slug) {
@@ -42,12 +37,18 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
   //Add loader Component if router.isFallback === true
   //Check for more https://nextjs.org/docs/api-reference/data-fetching/get-static-paths#fallback-pages
   if (!router.isFallback && pages?.slug) {
+    const { data: revalidatedPages, error } = useGetPages({
+      initialData: pages,
+      slug: pages?.slug,
+      preview: preview,
+    });
+
     return (
       <>
         {Object.keys(seo).length !== 0 && <SeoHead seo={seo} />}
         <Layout footer={footer}>
           {preview && <PreviewAlert />}
-          {pages.pageBuilder?.map(function (obj, index) {
+          {revalidatedPages.pageBuilder?.map(function (obj, index) {
             //console.log({...Object.values(obj)[0]});
             const content = { ...Object.values(obj)[0] };
             return (
