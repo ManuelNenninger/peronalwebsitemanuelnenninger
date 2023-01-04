@@ -77,7 +77,7 @@ export async function getStaticPaths() {
   //Fallback true: https://nextjs.org/docs/api-reference/data-fetching/get-static-paths
   return {
     paths: paths.map((slug) => ({ params: { slug } })),
-    fallback: "blocking",
+    fallback: true,
   };
 }
 
