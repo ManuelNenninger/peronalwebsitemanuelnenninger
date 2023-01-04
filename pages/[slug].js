@@ -87,8 +87,8 @@ export async function getStaticProps(context) {
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
   console.log("Die Preview ist: ", preview);
-  const pages = await getPageData(slug, preview);
-  const footer = await getFooterData();
+  // const pages = await getPageData(slug, preview);
+  // const footer = await getFooterData();
 
   // if (!pages?.slug) {
   //   console.log("In GST wird notFound gezeigt.");
@@ -96,6 +96,16 @@ export async function getStaticProps(context) {
   //     notFound: true, //showing 404 page
   //   };
   // }
+  let pages = {};
+  let footer = {};
+  try {
+    pages = await getPageData(slug, preview);
+    footer = await getFooterData();
+  } catch (err) {
+    return {
+      notFound: true, //showing 404 page
+    };
+  }
 
   console.log("Die Pages Daten in GetStaticProps sind: ", pages);
 
