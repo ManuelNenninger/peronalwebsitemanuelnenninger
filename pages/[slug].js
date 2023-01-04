@@ -10,12 +10,9 @@ import { getPageData, getFooterData } from "../lib/api";
 import { useGetPages } from "../src/components/atoms/fetcher/fetch";
 import PreviewAlert from "../src/components/atoms/loader/previewalert";
 
-export default function Site(props) {
-  const { pages = {} } = props;
+export default function Site({ pages = {}, footer = {}, preview = false }) {
   const { seo = {} } = pages;
-  const { preview = false } = props;
   const router = useRouter();
-
   // const { data: revalidatedPages, error } = useGetPages({
   //   initialData: pages,
   //   slug: pages?.slug,
@@ -40,11 +37,11 @@ export default function Site(props) {
   //If Page is pre-rendered, fallback is false
   //Add loader Component if router.isFallback === true
   //Check for more https://nextjs.org/docs/api-reference/data-fetching/get-static-paths#fallback-pages
-  if (!router.isFallback) {
+  if (!router.isFallback && pages?.slug) {
     return (
       <>
         {Object.keys(seo).length !== 0 && <SeoHead seo={seo} />}
-        <Layout {...props}>
+        <Layout footer={footer}>
           {preview && <PreviewAlert />}
           {pages.pageBuilder?.map(function (obj, index) {
             //console.log({...Object.values(obj)[0]});
@@ -73,6 +70,7 @@ export async function getStaticPaths() {
   const paths = await client.fetch(
     `*[_type == "page" && defined(slug.current)][].slug.current`
   );
+  console.log("GetStaticPaths zeigt: ", paths);
   //In paths sind nun alle slugs enthalten die Du auf Sainty in der Cloud hast.
   //getStaticPaths is required for dynamic SSG pages. So for [slug].js-files
   //Die JSON Struktur sieht z.B wie folgt aus:  params: { slug: 'impressum' },
@@ -92,14 +90,14 @@ export async function getStaticProps(context) {
   const pages = await getPageData(slug, preview);
   const footer = await getFooterData();
 
-  if (!pages?.slug) {
-    console.log("In GST wird notFound gezeigt.");
-    return {
-      notFound: true, //showing 404 page
-    };
-  }
+  // if (!pages?.slug) {
+  //   console.log("In GST wird notFound gezeigt.");
+  //   return {
+  //     notFound: true, //showing 404 page
+  //   };
+  // }
 
-  console.log("Die Pages Daten in gsp sind: ", pages);
+  console.log("Die Pages Daten in GetStaticProps sind: ", pages);
 
   return {
     props: {
