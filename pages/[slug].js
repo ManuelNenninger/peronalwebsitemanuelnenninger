@@ -85,10 +85,13 @@ export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
+  console.log("In getStaticProps wird der request erstellt");
   const pages = await getPageData(slug, preview);
   const footer = await getFooterData();
+  console.log("Die Daten sind da für Pages: ", pages);
 
   if (!pages?.slug) {
+    console.log("Es wird notFound angezeigt");
     return {
       notFound: true, //showing 404 page
     };
