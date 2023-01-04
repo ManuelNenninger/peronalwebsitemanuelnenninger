@@ -13,7 +13,7 @@ export default sanityClient({
 export const previewClient = sanityClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID, // you can find this in sanity.json
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET_NAME,
-  //apiVersion: "2022-08-30",
+  apiVersion: "2022-10-20",
   useCdn: false,
   token: process.env.NEXT_PUBLIC_SANITY_PREVIEW_TOKEN,
 });
