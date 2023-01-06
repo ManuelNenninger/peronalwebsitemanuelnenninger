@@ -1,5 +1,5 @@
 import SeoHead from "../src/components/seo/seohead";
-import { Module } from "../src/components/templates/modulepicker";
+import Module from "../src/components/templates/modulepicker";
 import Layout from "../src/layout";
 import { modules, modulestest, footermodule } from "../data/queries";
 import { NextSeo } from "next-seo";
