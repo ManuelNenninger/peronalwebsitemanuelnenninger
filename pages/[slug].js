@@ -1,6 +1,5 @@
 import groq from "groq";
 import client from "../client";
-// import Module from "../src/components/templates/modulepicker";
 import Layout from "../src/layout";
 import SeoHead from "../src/components/seo/seohead";
 import NotFoundPage from "./404";
@@ -20,15 +19,7 @@ import PortfolioSection from "../src/components/organisms/portfoliosection";
 import VisionSection from "../src/components/organisms/visionsection";
 
 // Test Test Test ---------------------------------
-const Notfall = (props) => {
-  return <h1>Ups</h1>;
-};
-const Test = (props) => {
-  return <h1>Ups</h1>;
-};
-const Module = ({ content, moduleName }) => {
-  return <h1>Ups</h1>;
-};
+
 // Test Test Test---------------------------------
 
 export default function Site({ pages = {}, footer = {}, preview = false }) {
