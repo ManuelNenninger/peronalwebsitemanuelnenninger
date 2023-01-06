@@ -1,6 +1,6 @@
 import groq from "groq";
 import client from "../client";
-import { Module } from "../src/components/templates/modules/modulepicker";
+// import { Module } from "../src/components/templates/modules/modulepicker";
 import Layout from "../src/layout";
 import SeoHead from "../src/components/seo/seohead";
 import NotFoundPage from "./404";
@@ -15,6 +15,12 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
   console.log("hier ist footer: ", footer);
   console.log("hier ist pages: ", pages);
   console.log("hier ist preview: ", preview);
+
+  // const { data: revalidatedPages, error } = useGetPages({
+  //   initialData: pages,
+  //   slug: pages?.slug,
+  //   preview: preview,
+  // });
 
   const router = useRouter();
 
@@ -37,27 +43,29 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
   //Add loader Component if router.isFallback === true
   //Check for more https://nextjs.org/docs/api-reference/data-fetching/get-static-paths#fallback-pages
   if (!router.isFallback && pages?.slug) {
-    const { data: revalidatedPages, error } = useGetPages({
-      initialData: pages,
-      slug: pages?.slug,
-      preview: preview,
-    });
-
     return (
       <>
         {Object.keys(seo).length !== 0 && <SeoHead seo={seo} />}
         <Layout footer={footer}>
           {preview && <PreviewAlert />}
-          {revalidatedPages.pageBuilder?.map(function (obj, index) {
-            //console.log({...Object.values(obj)[0]});
+          {pages.pageBuilder?.map(function (obj, index) {
+            console.log({ ...Object.values(obj)[0] });
+            console.log("Module Name ist:", Object.keys(obj)[0]);
             const content = { ...Object.values(obj)[0] };
             return (
+              <>
+                <h1>Test</h1>
+              </>
+            );
+            {
+              /* return (
               <Module
                 moduleName={Object.keys(obj)[0]}
                 onVariantChange={content}
                 content={content}
               />
-            );
+            ); */
+            }
           })}
           {/*<Module moduleName={"hero"}/>
         <Module moduleName={"grid"}/>
@@ -95,13 +103,6 @@ export async function getStaticProps(context) {
   const footer = await getFooterData();
   console.log("Die Daten sind da für Pages: ", pages);
   console.log("Die Footer Daten sind: ", footer);
-
-  if (!pages?.slug) {
-    console.log("Es wird notFound angezeigt");
-    return {
-      notFound: true, //showing 404 page
-    };
-  }
 
   return {
     props: {
