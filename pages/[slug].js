@@ -1,6 +1,6 @@
 import groq from "groq";
 import client from "../client";
-import { Module } from "../src/components/templates/modules/modulepicker";
+import Module from "../src/components/templates/modulepicker";
 import Layout from "../src/layout";
 import SeoHead from "../src/components/seo/seohead";
 import NotFoundPage from "./404";
