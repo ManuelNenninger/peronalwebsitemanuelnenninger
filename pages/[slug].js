@@ -29,20 +29,20 @@ const Test = (props) => {
 const Module = ({ content = {}, moduleName }) => {
   console.log("Im Module Picker sind daten für: ", moduleName);
   console.log("Im Module Picker ist der Content: ", content);
-  let ModuleType =
-    {
-      // grid: AgreementSection,
-      // hero: HeroSection,
-      // process: ProcessTimeline,
-      // about: AboutSection,
-      // portfolio: PortfolioSection,
-      // offer: OfferSection,
-      // block: BlockSite,
-      // vision: VisionSection,
-      a: Test,
-    }[moduleName] ?? Notfall;
+  // let ModuleType =
+  //   {
+  //     grid: AgreementSection,
+  //     hero: HeroSection,
+  //     process: ProcessTimeline,
+  //     about: AboutSection,
+  //     portfolio: PortfolioSection,
+  //     offer: OfferSection,
+  //     block: BlockSite,
+  //     vision: VisionSection,
+  //     a: Test,
+  //   }[moduleName] ?? Notfall;
 
-  return <ModuleType content={content} />;
+  return <Test content={content} />;
 };
 // Test Test Test---------------------------------
 
