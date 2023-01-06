@@ -29,7 +29,7 @@ const Test = (props) => {
 const Module = ({ content = {}, moduleName }) => {
   console.log("Im Module Picker sind daten für: ", moduleName);
   console.log("Im Module Picker ist der Content: ", content);
-  const ModuleType =
+  let ModuleType =
     {
       // grid: AgreementSection,
       // hero: HeroSection,
@@ -48,9 +48,6 @@ const Module = ({ content = {}, moduleName }) => {
 
 export default function Site({ pages = {}, footer = {}, preview = false }) {
   const { seo = {} } = pages;
-  console.log("hier ist footer: ", footer);
-  console.log("hier ist pages: ", pages);
-  console.log("hier ist preview: ", preview);
 
   // const { data: revalidatedPages, error } = useGetPages({
   //   initialData: pages,
@@ -62,7 +59,6 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
 
   // If fallback is over and no page data is availible, show 404.js
   if (!router.isFallback && !pages?.slug) {
-    console.log("Zeige die 404 Page", pages);
     return <NotFoundPage statusCode={404} />;
   }
 
