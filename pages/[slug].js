@@ -20,19 +20,23 @@ import PortfolioSection from "../src/components/organisms/portfoliosection";
 import VisionSection from "../src/components/organisms/visionsection";
 
 // Test Test Test ---------------------------------
+const notfall = (props) => {
+  return <h1>Ups</h1>;
+};
 const Module = ({ content = {}, moduleName }) => {
   console.log("Im Module Picker sind daten für: ", moduleName);
   console.log("Im Module Picker ist der Content: ", content);
-  const ModuleType = {
-    grid: AgreementSection,
-    hero: HeroSection,
-    process: ProcessTimeline,
-    about: AboutSection,
-    portfolio: PortfolioSection,
-    offer: OfferSection,
-    block: BlockSite,
-    vision: VisionSection,
-  }[moduleName] ?? <></>;
+  const ModuleType =
+    {
+      grid: AgreementSection,
+      hero: HeroSection,
+      process: ProcessTimeline,
+      about: AboutSection,
+      portfolio: PortfolioSection,
+      offer: OfferSection,
+      block: BlockSite,
+      vision: VisionSection,
+    }[moduleName] ?? notfall;
 
   return <ModuleType content={content} />;
 };
