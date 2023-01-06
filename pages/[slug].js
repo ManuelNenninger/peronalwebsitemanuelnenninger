@@ -26,7 +26,7 @@ const Notfall = (props) => {
 const Test = (props) => {
   return <h1>Ups</h1>;
 };
-const Module = ({ content = {}, moduleName }) => {
+const Module = ({ content, moduleName }) => {
   console.log("Im Module Picker sind daten für: ", moduleName);
   console.log("Im Module Picker ist der Content: ", content);
   // let ModuleType =
