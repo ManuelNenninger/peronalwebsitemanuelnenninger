@@ -9,14 +9,14 @@ import { getPageData, getFooterData } from "../lib/api";
 import { useGetPages } from "../src/components/atoms/fetcher/fetch";
 import PreviewAlert from "../src/components/atoms/loader/previewalert";
 // Test Importe
-import HeroSection from "../src/components/organisms/herosection";
-import AgreementSection from "../src/components/organisms/agreementsection";
-import ProcessTimeline from "../src/components/organisms/processtimeline";
-import AboutSection from "../src/components/organisms/aboutsection";
-import OfferSection from "../src/components/organisms/offersection";
-import BlockSite from "../src/components/organisms/blocksite";
-import PortfolioSection from "../src/components/organisms/portfoliosection";
-import VisionSection from "../src/components/organisms/visionsection";
+// import HeroSection from "../src/components/organisms/herosection";
+// import AgreementSection from "../src/components/organisms/agreementsection";
+// import ProcessTimeline from "../src/components/organisms/processtimeline";
+// import AboutSection from "../src/components/organisms/aboutsection";
+// import OfferSection from "../src/components/organisms/offersection";
+// import BlockSite from "../src/components/organisms/blocksite";
+// import PortfolioSection from "../src/components/organisms/portfoliosection";
+// import VisionSection from "../src/components/organisms/visionsection";
 
 // Test Test Test ---------------------------------
 
