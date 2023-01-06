@@ -27,22 +27,7 @@ const Test = (props) => {
   return <h1>Ups</h1>;
 };
 const Module = ({ content, moduleName }) => {
-  console.log("Im Module Picker sind daten für: ", moduleName);
-  console.log("Im Module Picker ist der Content: ", content);
-  // let ModuleType =
-  //   {
-  //     grid: AgreementSection,
-  //     hero: HeroSection,
-  //     process: ProcessTimeline,
-  //     about: AboutSection,
-  //     portfolio: PortfolioSection,
-  //     offer: OfferSection,
-  //     block: BlockSite,
-  //     vision: VisionSection,
-  //     a: Test,
-  //   }[moduleName] ?? Notfall;
-
-  return <Test content={content} />;
+  return <h1>Ups</h1>;
 };
 // Test Test Test---------------------------------
 
