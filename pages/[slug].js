@@ -1,6 +1,6 @@
 import groq from "groq";
 import client from "../client";
-// import { Module } from "../src/components/templates/modules/modulepicker";
+import { Module } from "../src/components/templates/modules/modulepicker";
 import Layout from "../src/layout";
 import SeoHead from "../src/components/seo/seohead";
 import NotFoundPage from "./404";
@@ -15,6 +15,9 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
   console.log("hier ist footer: ", footer);
   console.log("hier ist pages: ", pages);
   console.log("hier ist preview: ", preview);
+  // Test Test Test
+
+  // Test Test Test
 
   // const { data: revalidatedPages, error } = useGetPages({
   //   initialData: pages,
@@ -48,25 +51,28 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
         {Object.keys(seo).length !== 0 && <SeoHead seo={seo} />}
         <Layout footer={footer}>
           {preview && <PreviewAlert />}
-          {pages.pageBuilder?.map(function (obj, index) {
+          <h1>Test</h1>
+          {/* {pages.pageBuilder.map(function (obj, index) {
+            const content = { ...Object.values(obj)[0] };
+            const modulename = Object.keys(obj)[0];
+            if (modulename === "block") {
+              return <Module moduleName={"block"} content={content} />;
+            } else {
+            }
+          })} */}
+          {/* <Module moduleName={"block"} content={}/> */}
+          {/* {pages.pageBuilder?.map(function (obj, index) {
             console.log({ ...Object.values(obj)[0] });
-            console.log("Module Name ist:", Object.keys(obj)[0]);
+            console.log("Module Name ist: ", Object.keys(obj)[0]);
             const content = { ...Object.values(obj)[0] };
             return (
-              <>
-                <h1>Test</h1>
-              </>
-            );
-            {
-              /* return (
               <Module
                 moduleName={Object.keys(obj)[0]}
                 onVariantChange={content}
                 content={content}
               />
-            ); */
-            }
-          })}
+            ); 
+          })} */}
           {/*<Module moduleName={"hero"}/>
         <Module moduleName={"grid"}/>
         <Module moduleName={"timeline"}/>

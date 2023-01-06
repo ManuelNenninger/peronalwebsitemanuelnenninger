@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 import HeroSection from "../../organisms/herosection";
 import AgreementSection from "../../organisms/agreementsection";
@@ -9,16 +9,9 @@ import BlockSite from "../../organisms/blocksite";
 import PortfolioSection from "../../organisms/portfoliosection";
 import VisionSection from "../../organisms/visionsection";
 
-export const Module = ({
-  index,
-  data,
-  product,
-  activeVariant,
-  onVariantChange,
-  content={},
-  moduleName=""
-}, ) => {
-
+export const Module = ({ content = {}, moduleName }) => {
+  console.log("Im Module Picker sind daten für: ", moduleName);
+  console.log("Im Module Picker ist der Content: ", content);
   const ModuleType = {
     grid: AgreementSection,
     hero: HeroSection,
@@ -28,16 +21,7 @@ export const Module = ({
     offer: OfferSection,
     block: BlockSite,
     vision: VisionSection,
-  }[moduleName] ?? <></>
+  }[moduleName] ?? <></>;
 
-  return (
-    <ModuleType
-      index={index}
-      data={data}
-      product={product}
-      activeVariant={activeVariant}
-      onVariantChange={onVariantChange}
-      content={content}
-    />
-  )
-}
+  return <ModuleType content={content} />;
+};
