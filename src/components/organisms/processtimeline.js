@@ -11,8 +11,8 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import SectionWrapper from "../atoms/wrapperElements/sectionWrapper";
-import * as MuiIcons from "@mui/icons-material";
 import Divider from "@mui/material/Divider";
+import Icon from "@mui/material/Icon";
 
 //Icons
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -50,7 +50,7 @@ export default function CustomizedTimeline({ content = {} }) {
     { mainTitle, describtion, iconname = "MailOutline" },
     index
   ) => {
-    const Icon = MuiIcons[iconname];
+    // const Icon = MuiIcons[iconname];
     return (
       <>
         <TimelineItem key={"Timeline_" + index} color="secondary">
@@ -65,7 +65,7 @@ export default function CustomizedTimeline({ content = {} }) {
           <TimelineSeparator>
             <TimelineConnector sx={{ bgcolor: "secondary.main" }} />
             <TimelineDot color="secondary">
-              <Icon sx={{ fontSize: 30 }} />
+              <Icon sx={{ fontSize: 30 }}>{iconname}</Icon>
             </TimelineDot>
             <TimelineConnector sx={{ bgcolor: "secondary.main" }} />
           </TimelineSeparator>

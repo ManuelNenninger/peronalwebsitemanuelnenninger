@@ -7,8 +7,8 @@ import SvgIcon from "@mui/material/SvgIcon";
 import { PortableText } from "@portabletext/react";
 import { ptComponents } from "../../../lib/sanity";
 import SectionWrapper from "../atoms/wrapperElements/sectionWrapper";
-import * as MuiIcons from "@mui/icons-material";
 import Divider from "@mui/material/Divider";
+import Icon from "@mui/material/Icon";
 
 export default function BoxSx({ content = {} }) {
   const theme = useTheme();
@@ -91,10 +91,7 @@ export default function BoxSx({ content = {} }) {
             }}
           >
             <Grid item>
-              <SvgIcon
-                component={MuiIcons[iconname]}
-                sx={{ fontSize: 60, mb: 2 }}
-              />
+              <Icon sx={{ fontSize: 60, mb: 2 }}>{iconname}</Icon>
             </Grid>
             <Grid item>
               <Typography

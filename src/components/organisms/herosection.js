@@ -9,10 +9,10 @@ export default function HeroSection({ content = {}, onVariantChange = {} }) {
   let {
     heroTitle = "Hier sollte der HeroTitle stehen.",
     heroDescribtion = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    mainImage = {}, // <------ delet {}
-    primaryCallToAction = {},
-    secondaryCallToAction = {},
-  } = onVariantChange;
+    mainImage,
+    primaryCallToAction,
+    secondaryCallToAction,
+  } = content;
 
   return (
     <SectionWrapper firstSectionDistance fullViewHeight>
