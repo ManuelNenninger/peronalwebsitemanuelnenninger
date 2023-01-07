@@ -9,7 +9,7 @@ import { getPageData, getFooterData } from "../lib/api";
 import { useGetPages } from "../src/components/atoms/fetcher/fetch";
 import PreviewAlert from "../src/components/atoms/loader/previewalert";
 // Test Importe
-// import HeroSection from "../src/components/organisms/herosection";
+import HeroSection from "../src/components/organisms/herosection";
 // import AgreementSection from "../src/components/organisms/agreementsection";
 // import ProcessTimeline from "../src/components/organisms/processtimeline";
 // import AboutSection from "../src/components/organisms/aboutsection";
