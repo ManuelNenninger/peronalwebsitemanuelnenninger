@@ -9,8 +9,8 @@ import BlockSite from "../organisms/blocksite";
 import PortfolioSection from "../organisms/portfoliosection";
 import VisionSection from "../organisms/visionsection";
 
-const Notfall = (props) => {
-  return <h1>Ups</h1>;
+const Fallback = (props) => {
+  return <h1>Ups. No Data found.</h1>;
 };
 
 export const Module = ({ content, moduleName }) => {
@@ -24,7 +24,7 @@ export const Module = ({ content, moduleName }) => {
       offer: OfferSection,
       block: BlockSite,
       vision: VisionSection,
-    }[moduleName] ?? Notfall;
+    }[moduleName] ?? Fallback;
 
   return <ModuleType content={content} />;
 };

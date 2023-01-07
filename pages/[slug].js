@@ -1,5 +1,6 @@
 import groq from "groq";
 import client from "../client";
+import { Module } from "../src/components/templates/modulepicker";
 import Layout from "../src/layout";
 import SeoHead from "../src/components/seo/seohead";
 import NotFoundPage from "./404";
@@ -8,30 +9,16 @@ import { useRouter } from "next/router";
 import { getPageData, getFooterData } from "../lib/api";
 import { useGetPages } from "../src/components/atoms/fetcher/fetch";
 import PreviewAlert from "../src/components/atoms/loader/previewalert";
-// Test Importe
-import HeroSection from "../src/components/organisms/herosection";
-import AgreementSection from "../src/components/organisms/agreementsection";
-import ProcessTimeline from "../src/components/organisms/processtimeline";
-import AboutSection from "../src/components/organisms/aboutsection";
-import OfferSection from "../src/components/organisms/offersection";
-import BlockSite from "../src/components/organisms/blocksite";
-import PortfolioSection from "../src/components/organisms/portfoliosection";
-import VisionSection from "../src/components/organisms/visionsection";
-
-// Test Test Test ---------------------------------
-
-// Test Test Test---------------------------------
 
 export default function Site({ pages = {}, footer = {}, preview = false }) {
   const { seo = {} } = pages;
-
-  // const { data: revalidatedPages, error } = useGetPages({
-  //   initialData: pages,
-  //   slug: pages?.slug,
-  //   preview: preview,
-  // });
-
   const router = useRouter();
+
+  const { data: revalidatedPages, error } = useGetPages({
+    initialData: pages,
+    slug: pages?.slug,
+    preview: preview,
+  });
 
   // If fallback is over and no page data is availible, show 404.js
   if (!router.isFallback && !pages?.slug) {
@@ -56,19 +43,9 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
         {Object.keys(seo).length !== 0 && <SeoHead seo={seo} />}
         <Layout footer={footer}>
           {preview && <PreviewAlert />}
-          <h1>Test</h1>
-          {/* {pages.pageBuilder.map(function (obj, index) {
-            const content = { ...Object.values(obj)[0] };
-            const modulename = Object.keys(obj)[0];
-            if (modulename === "block") {
-              return <Module moduleName={"block"} content={content} />;
-            } else {
-            }
-          })} */}
-          {/* <Module moduleName={"block"} content={}/> */}
-          {/* {pages.pageBuilder?.map(function (obj, index) {
+          {revalidatedPages.pageBuilder?.map(function (obj, index) {
             console.log({ ...Object.values(obj)[0] });
-            console.log("Module Name ist: ", Object.keys(obj)[0]);
+            //console.log("Module Name ist: ", Object.keys(obj)[0]);
             const content = { ...Object.values(obj)[0] };
             return (
               <Module
@@ -76,14 +53,8 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
                 onVariantChange={content}
                 content={content}
               />
-            ); 
-          })} */}
-          {/*<Module moduleName={"hero"}/>
-        <Module moduleName={"grid"}/>
-        <Module moduleName={"timeline"}/>
-        <Module moduleName={"offer"}/>
-        <Module moduleName={"portfolio"}/>
-        <Module moduleName={"about"}/>*/}
+            );
+          })}
         </Layout>
       </>
     );
@@ -109,7 +80,6 @@ export async function getStaticProps(context) {
   // It's important to default the slug so that it doesn't return "undefined"
   const { slug = "" } = context.params;
   const { preview = false, previewData } = context;
-  console.log("In getStaticProps wird der request erstellt");
   const pages = await getPageData(slug, preview);
   const footer = await getFooterData();
   console.log("Die Daten sind da für Pages: ", pages);
