@@ -5,12 +5,13 @@ import { motion, useInView } from "framer-motion";
 /*
 Fuer mehr Transitions siehe: https://www.framer.com/motion/transition/
 Fuer mehr cubic-bezier siehe: https://cubic-bezier.com/#.17,.67,1,.28
+Global Css sollte folgende Property haben:   overflow-x: hidden;
 
 */
 
 export default function Transition({ children, xTransition, yTransition }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
+  const isInView = useInView(ref, { once: true });
 
   //   useEffect(() => {
   //     console.log("Element is in view: ", isInView)
@@ -37,21 +38,25 @@ export default function Transition({ children, xTransition, yTransition }) {
       x: XTransition,
     },
   };
+  //   return (
+  //     <>
+  //       <div>{children}</div>
+  //     </>
+  //   );
 
   return (
     <>
-      <Box
-        component={motion.div}
+      <motion.div
         animate={isInView ? "visible" : "hidden"}
         variants={variants}
         transition={{
-          duration: 1.5,
+          duration: 1,
           ease: [0.17, 0.55, 0.55, 1],
         }}
         ref={ref}
       >
         {children}
-      </Box>
+      </motion.div>
     </>
   );
 }
