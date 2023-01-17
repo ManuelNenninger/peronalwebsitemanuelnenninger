@@ -13,6 +13,7 @@ import { useTheme } from "@mui/material/styles";
 import Divider from "@mui/material/Divider";
 import { PortableText } from "@portabletext/react";
 import { ptComponents } from "../../../../lib/sanity";
+import Transition from "../wrapperElements/transition";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -118,7 +119,9 @@ export default function OutlinedCard(props, index) {
       sx={{ width: "100%", pb: { xs: 5, md: 0 } }}
       key={"OfferCard_" + index}
     >
-      <AngebotsCard {...props} />
+      <Transition>
+        <AngebotsCard {...props} />
+      </Transition>
     </Grid>
   );
 }

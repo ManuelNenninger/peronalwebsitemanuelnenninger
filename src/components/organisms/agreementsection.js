@@ -9,6 +9,7 @@ import { ptComponents } from "../../../lib/sanity";
 import SectionWrapper from "../atoms/wrapperElements/sectionWrapper";
 import Divider from "@mui/material/Divider";
 import Icon from "@mui/material/Icon";
+import Transition from "../atoms/wrapperElements/transition";
 
 export default function BoxSx({ content = {} }) {
   const theme = useTheme();
@@ -70,64 +71,72 @@ export default function BoxSx({ content = {} }) {
           item
           key={"Grid_" + index}
         >
-          <Grid
-            container
-            direction="column"
-            justifyContent="center"
-            alignItems="flex-start"
-            sx={{
-              borderRadius: 0,
-              //background: "linear-gradient(rgba(90, 128, 147, 1), rgba(0, 0, 0, 0))",
-              //borderImage: "linear-gradient(45deg, rgb(29, 58, 36) 0%, rgba(0, 0, 0, 0) 100%)",
-              p: 3,
-              pb: 5,
-              "& > div": {
-                //pb: 1,
-                //borderRight: 1,
-              },
-              // "& :not(:first-of-type)": {
-              //   pt: 1,
-              // },
-            }}
-          >
-            <Grid item>
-              <Icon sx={{ fontSize: 60, mb: 2 }}>{iconname}</Icon>
-            </Grid>
-            <Grid item>
-              <Typography
-                variant="h2"
-                gutterBottom
-                sx={{ fontWeight: "400", display: { xs: "none", sm: "block" } }}
-              >
-                {title}
-              </Typography>
-              <Typography
-                variant="h3"
-                gutterBottom
-                sx={{ fontWeight: "400", display: { xs: "block", sm: "none" } }}
-              >
-                {title}
-              </Typography>
+          <Transition yTransition={"fromBottom"}>
+            <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="flex-start"
+              sx={{
+                borderRadius: 0,
+                //background: "linear-gradient(rgba(90, 128, 147, 1), rgba(0, 0, 0, 0))",
+                //borderImage: "linear-gradient(45deg, rgb(29, 58, 36) 0%, rgba(0, 0, 0, 0) 100%)",
+                p: 3,
+                pb: 5,
+                "& > div": {
+                  //pb: 1,
+                  //borderRight: 1,
+                },
+                // "& :not(:first-of-type)": {
+                //   pt: 1,
+                // },
+              }}
+            >
               <Grid item>
-                <Divider
+                <Icon sx={{ fontSize: 60, mb: 2 }}>{iconname}</Icon>
+              </Grid>
+              <Grid item>
+                <Typography
+                  variant="h2"
+                  gutterBottom
                   sx={{
-                    borderBottomWidth: "thick",
-                    borderColor: "secondary.main",
-                    my: 1,
+                    fontWeight: "400",
+                    display: { xs: "none", sm: "block" },
                   }}
-                />
+                >
+                  {title}
+                </Typography>
+                <Typography
+                  variant="h3"
+                  gutterBottom
+                  sx={{
+                    fontWeight: "400",
+                    display: { xs: "block", sm: "none" },
+                  }}
+                >
+                  {title}
+                </Typography>
+                <Grid item>
+                  <Divider
+                    sx={{
+                      borderBottomWidth: "thick",
+                      borderColor: "secondary.main",
+                      my: 1,
+                    }}
+                  />
+                </Grid>
+              </Grid>
+              <Grid item>
+                <Typography variant="subtitle2" gutterBottom>
+                  {Object.keys(content).length !== 0 ? (
+                    <PortableText value={body} components={ptComponents} />
+                  ) : (
+                    "Beschreibung: Lorem Ipsum lara.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. "
+                  )}
+                </Typography>
               </Grid>
             </Grid>
-            <Grid item>
-              <Typography variant="subtitle2" gutterBottom>
-                {Object.keys(content).length !== 0 ? (
-                  <PortableText value={body} components={ptComponents} />
-                ) : (
-                  "Beschreibung: Lorem Ipsum lara.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. "
-                )}
-              </Typography>
-            </Grid>
-          </Grid>
+          </Transition>
         </Grid>
       </>
     );

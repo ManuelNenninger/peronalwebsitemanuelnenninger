@@ -11,8 +11,10 @@ import TimelineDot from "@mui/lab/TimelineDot";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import SectionWrapper from "../atoms/wrapperElements/sectionWrapper";
+// import * as MuiIcons from "@mui/icons-material";
 import Divider from "@mui/material/Divider";
 import Icon from "@mui/material/Icon";
+import Transition from "../atoms/wrapperElements/transition";
 
 //Icons
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
@@ -69,36 +71,38 @@ export default function CustomizedTimeline({ content = {} }) {
             </TimelineDot>
             <TimelineConnector sx={{ bgcolor: "secondary.main" }} />
           </TimelineSeparator>
-          <TimelineContent
-            sx={{
-              py: 10,
-              px: { sm: 2, md: 10 },
-              maxWidth: { sm: "none", md: "60vw", lg: "50vw" },
-            }}
-          >
-            <Typography
-              variant="h2"
-              component="div"
-              sx={{ fontWeight: 300, display: { xs: "none", sm: "block" } }}
-            >
-              {mainTitle}
-            </Typography>
-            <Typography
-              variant="h3"
-              component="div"
-              sx={{ fontWeight: 300, display: { xs: "block", sm: "none" } }}
-            >
-              {mainTitle}
-            </Typography>
-            <Divider
+          <Transition xTransition={"fromLeft"}>
+            <TimelineContent
               sx={{
-                borderBottomWidth: "thick",
-                my: 1,
-                borderColor: "secondary.main",
+                py: 10,
+                px: { sm: 2, md: 10 },
+                maxWidth: { sm: "none", md: "60vw", lg: "50vw" },
               }}
-            />
-            <Typography>{describtion}</Typography>
-          </TimelineContent>
+            >
+              <Typography
+                variant="h2"
+                component="div"
+                sx={{ fontWeight: 300, display: { xs: "none", sm: "block" } }}
+              >
+                {mainTitle}
+              </Typography>
+              <Typography
+                variant="h3"
+                component="div"
+                sx={{ fontWeight: 300, display: { xs: "block", sm: "none" } }}
+              >
+                {mainTitle}
+              </Typography>
+              <Divider
+                sx={{
+                  borderBottomWidth: "thick",
+                  my: 1,
+                  borderColor: "secondary.main",
+                }}
+              />
+              <Typography>{describtion}</Typography>
+            </TimelineContent>
+          </Transition>
         </TimelineItem>
       </>
     );

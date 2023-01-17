@@ -7,6 +7,7 @@ import { PortableText } from "@portabletext/react";
 import { ptComponents } from "../../../lib/sanity";
 import { useTheme } from "@mui/material/styles";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import Transition from "../atoms/wrapperElements/transition";
 
 export default function BoxSx({ content = {} }) {
   const theme = useTheme();
@@ -17,38 +18,40 @@ export default function BoxSx({ content = {} }) {
 
   return (
     <SectionWrapper topDistance>
-      <Grid
-        container
-        direction="column"
-        justifyContent="flex-start"
-        alignItems="flex-start"
-      >
-        {" "}
-        <Typography
-          variant="h4"
-          gutterBottom
-          sx={{ borderBottom: 4, borderColor: theme.palette.secondary.main }}
+      <Transition xTransition={"fromLeft"}>
+        <Grid
+          container
+          direction="column"
+          justifyContent="flex-start"
+          alignItems="flex-start"
         >
-          <FormatQuoteIcon sx={{ fontSize: "80px" }} />
-        </Typography>
-        {typeof body !== "string" ? (
-          <PortableText value={body} components={ptComponents} />
-        ) : (
+          {" "}
           <Typography
-            variant="h2"
+            variant="h4"
             gutterBottom
-            sx={{
-              backgroundImage: "linear-gradient(45deg, #f3ec78, #af4261)",
-              backgroundClip: "text",
-              textFillColor: "transparent",
-            }}
+            sx={{ borderBottom: 4, borderColor: theme.palette.secondary.main }}
           >
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua.
+            <FormatQuoteIcon sx={{ fontSize: "80px" }} />
           </Typography>
-        )}
-      </Grid>
+          {typeof body !== "string" ? (
+            <PortableText value={body} components={ptComponents} />
+          ) : (
+            <Typography
+              variant="h2"
+              gutterBottom
+              sx={{
+                backgroundImage: "linear-gradient(45deg, #f3ec78, #af4261)",
+                backgroundClip: "text",
+                textFillColor: "transparent",
+              }}
+            >
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+              erat, sed diam voluptua.
+            </Typography>
+          )}
+        </Grid>
+      </Transition>
     </SectionWrapper>
   );
 }
