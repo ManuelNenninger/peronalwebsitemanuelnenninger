@@ -33,6 +33,19 @@ const gradientTextRender = (props) => (
     {props.children}
   </span>
 );
+const animatedTextIcon = () => (
+  <span style={{ fontWeight: "bold" }}>Animate</span>
+);
+
+const animatedTextRender = (props) => (
+  <span
+    style={{
+      color: "rgb(222, 222, 210)",
+    }}
+  >
+    {props.children}
+  </span>
+);
 
 export default {
   title: "Block Content",
@@ -79,6 +92,14 @@ export default {
             blockEditor: {
               icon: gradientTextIcon,
               render: gradientTextRender,
+            },
+          },
+          {
+            title: "Animated Text",
+            value: "animatedText",
+            blockEditor: {
+              icon: animatedTextIcon,
+              render: animatedTextRender,
             },
           },
         ],

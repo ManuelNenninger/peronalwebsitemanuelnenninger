@@ -11,6 +11,7 @@ import HighlighterText from "../wrapperElements/highlighterText";
 import SubscribeDialogPopUp from "../dialogPopUp/subscribeDialogPopUp";
 import { PortableText } from "@portabletext/react";
 import { ptComponents } from "../../../../lib/sanity";
+import Divider from "@mui/material/Divider";
 
 export default function HeroDescribtion({
   heroTitle,
@@ -58,6 +59,14 @@ export default function HeroDescribtion({
           sx={{ pr: { xs: "none", md: 5 }, mt: { xs: 0, md: 0 } }}
         >
           <Grid item sx={{ mb: { xs: 4, md: 0 } }}>
+            <Divider
+              sx={{
+                borderWidth: 3,
+                mr: "85%",
+                mb: 2,
+                borderColor: "black",
+              }}
+            />
             {/*Fehler Variable.*/}
             {typeof heroTitl !== "string" ? (
               <PortableText value={heroTitle} components={ptComponents} />
@@ -66,7 +75,7 @@ export default function HeroDescribtion({
             )}
           </Grid>
           <Grid item>
-            <Typography variant="h4" component="h2" sx={{ mb: 6 }}>
+            <Typography variant="h5" component="h2" sx={{ mb: 6 }}>
               {heroDescribtion}
             </Typography>
           </Grid>
