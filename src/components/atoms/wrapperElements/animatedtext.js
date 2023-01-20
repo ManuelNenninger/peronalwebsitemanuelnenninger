@@ -44,7 +44,7 @@ export default function AnimatedText({ children }) {
   };
   const wordAnimation = {
     hidden: {},
-    visible: {},
+    visible: { delay: 5 },
   };
 
   /*
@@ -80,10 +80,10 @@ export default function AnimatedText({ children }) {
             //0.05 here tells each letter to delay it’s animation start by 0.05 seconds, providing a nice reveal animation on each word.
             //This property is how we tell each word to start slightly after the previous one. Using index * 0.25 the first word will animate immediately, and each subsequent word will start after an additional 0.25 seconds.
             transition={{
-              //   delayChildren: index * 0.25,
-              //   staggerChildren: 0.05,
-              delayChildren: index * 0.15,
-              staggerChildren: 0.03,
+              delayChildren: index * 0.25,
+              staggerChildren: 0.05,
+              //   delayChildren: index * 0.15,
+              //   staggerChildren: 0.03,
             }}
           >
             {word.split("").map((character, index) => {

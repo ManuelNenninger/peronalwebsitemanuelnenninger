@@ -50,7 +50,7 @@ export default function Transition({ children, xTransition, yTransition }) {
         animate={isInView ? "visible" : "hidden"}
         variants={variants}
         transition={{
-          duration: 1,
+          duration: 1.5,
           ease: [0.17, 0.55, 0.55, 1],
         }}
         ref={ref}
