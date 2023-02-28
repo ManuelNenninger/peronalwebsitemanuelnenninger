@@ -11,7 +11,7 @@ import { useGetPages } from "../src/components/atoms/fetcher/fetch";
 import PreviewAlert from "../src/components/atoms/loader/previewalert";
 
 export default function Site({ pages = {}, footer = {}, preview = false }) {
-  const { seo = {} } = pages;
+  const { seo = {}, slug = "" } = pages;
   const router = useRouter();
 
   const { data: revalidatedPages, error } = useGetPages({
@@ -40,7 +40,7 @@ export default function Site({ pages = {}, footer = {}, preview = false }) {
   if (!router.isFallback && pages?.slug) {
     return (
       <>
-        {Object.keys(seo).length !== 0 && <SeoHead seo={seo} />}
+        {Object.keys(seo).length !== 0 && <SeoHead seo={seo} slug={slug} />}
         <Layout footer={footer}>
           {preview && <PreviewAlert />}
           {revalidatedPages.pageBuilder?.map(function (obj, index) {

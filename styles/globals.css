@@ -50,9 +50,10 @@ https://dev.to/tanahmed/next-image-make-image-fill-available-space-272o */
   position: relative !important;
   height: unset !important;
   border-top-right-radius: 1%;
-  border-bottom-right-radius: 25%;
-  border-top-left-radius: 25%;
-  border-bottom-left-radius: 25%;
+  border-bottom-right-radius: 1%;
+  border-top-left-radius: 1%;
+  border-bottom-left-radius: 1%;
+  background-color: #5a8093;
   border: 5px solid #292727;
 }
 
